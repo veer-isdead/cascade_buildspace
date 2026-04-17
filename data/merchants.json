@@ -1,0 +1,45 @@
+[
+  {
+    "id": "merchant-001",
+    "merchant_id": "MER-ALPHA",
+    "name": "Neel Kapoor",
+    "company": "Vertex Retail",
+    "contact_email": "neel@vertex-retail.com",
+    "preferred_hub": "hub-berlin",
+    "booked_slots": []
+  },
+  {
+    "id": "merchant-002",
+    "merchant_id": "MER-BETA",
+    "name": "Hannah Lim",
+    "company": "Pacific Commerce",
+    "contact_email": "hannah@pacific-commerce.com",
+    "preferred_hub": "hub-singapore",
+    "booked_slots": [
+      {
+        "hub_id": "hub-singapore",
+        "slot_time": "12:00",
+        "price": 1125.0,
+        "shipment_count": 2,
+        "status": "booked"
+      }
+    ]
+  },
+  {
+    "id": "merchant-003",
+    "merchant_id": "MER-GAMMA",
+    "name": "Lucas Brown",
+    "company": "Midwest Freight Partners",
+    "contact_email": "lucas@midwestfreight.com",
+    "preferred_hub": "hub-chicago",
+    "booked_slots": [
+      {
+        "hub_id": "hub-chicago",
+        "slot_time": "19:00",
+        "price": 1280.0,
+        "shipment_count": 1,
+        "status": "booked"
+      }
+    ]
+  }
+]

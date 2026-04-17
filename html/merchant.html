@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Desk | Cascade</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#ff8f06",
+                        "tertiary-fixed-dim": "#f38800",
+                        "secondary-container": "#006b5f",
+                        "on-secondary": "#005c52",
+                        "on-tertiary-container": "#462300",
+                        "on-primary-fixed": "#000000",
+                        "on-error-container": "#ffb2b9",
+                        "primary": "#ba9eff",
+                        "error-container": "#a70138",
+                        "on-tertiary": "#562c00",
+                        "surface-container-high": "#141f38",
+                        "surface-container": "#0f1930",
+                        "background": "#060e20",
+                        "secondary-dim": "#50ebd5",
+                        "on-primary-fixed-variant": "#370086",
+                        "on-error": "#490013",
+                        "on-tertiary-fixed": "#291200",
+                        "on-surface-variant": "#a3aac4",
+                        "on-secondary-container": "#dcfff7",
+                        "error-dim": "#d73357",
+                        "tertiary-fixed": "#ff972e",
+                        "on-tertiary-fixed-variant": "#592e00",
+                        "primary-fixed-dim": "#a27cff",
+                        "surface-container-low": "#091328",
+                        "inverse-on-surface": "#4d556b",
+                        "surface-dim": "#060e20",
+                        "surface-container-lowest": "#000000",
+                        "outline-variant": "#40485d",
+                        "error": "#ff6e84",
+                        "outline": "#6d758c",
+                        "surface-container-highest": "#192540",
+                        "surface-tint": "#ba9eff",
+                        "inverse-primary": "#6e3bd7",
+                        "primary-container": "#ae8dff",
+                        "secondary": "#62fae3",
+                        "primary-fixed": "#ae8dff",
+                        "on-background": "#dee5ff",
+                        "inverse-surface": "#faf8ff",
+                        "surface": "#060e20",
+                        "on-primary": "#39008c",
+                        "surface-bright": "#1f2b49",
+                        "on-surface": "#dee5ff",
+                        "on-secondary-fixed-variant": "#00675c",
+                        "surface-variant": "#192540",
+                        "secondary-fixed": "#62fae3",
+                        "tertiary-dim": "#ec8300",
+                        "on-secondary-fixed": "#004840",
+                        "on-primary-container": "#2b006e",
+                        "tertiary": "#ffa450",
+                        "secondary-fixed-dim": "#50ebd5",
+                        "primary-dim": "#8455ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+</script>
+<link href="../css/styles.css" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #060e20; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .ghost-border { border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow-primary { box-shadow: 0 0 15px rgba(186, 158, 255, 0.2); }
+        .glass-panel { backdrop-filter: blur(20px); background: rgba(15, 25, 48, 0.4); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface bg-surface-dim selection:bg-primary/30 min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/60 backdrop-blur-xl border-b border-white/10 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Hub Monitor</a>
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm font-semibold" href="#">Merchant Desk</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Crisis Control</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#ba9eff] p-2 hover:bg-white/5 transition-all rounded-full" data-icon="light_mode">light_mode</button>
+<div class="w-10 h-10 rounded-full border border-[#ba9eff]/30 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="professional male portrait with neutral background and sharp lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgHlEHH7czeHJWO8wEnizXLIQ_kqRnNVhu5rzK-tXLyNHQF287W6ZPIT5noufPfi9jVAOA1HYDeexaAt-vRRbe6xOQcBF2ZPrvwnmBsZxEc909fyCotHD6YRYm8H6O9RsPhanAF1YagpvGZUNcrA79yGyrnV3c0wswfw7W-HAZN1kxnXIIyuiZaVha-qQ4RWGThdo0Hq6m2g5GtZKV4xO6lKZhukMPFA99mGU1Q5ORq6i5d59dQhVPvLgUlBGkeUS0nboUBAHlVFQ"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
+<div class="px-6 mb-8">
+<h2 class="text-xs font-bold tracking-[0.2em] text-[#ba9eff]/50 font-headline">MANAGEMENT</h2>
+</div>
+<nav class="flex flex-col">
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="dashboard">dashboard</span>
+<span class="font-label">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="biotech">biotech</span>
+<span class="font-label">Hub Monitor</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] group" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label font-semibold">Merchant Desk</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="emergency_home">emergency_home</span>
+<span class="font-label">Crisis Control</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="monitoring">monitoring</span>
+<span class="font-label">KPI Metrics</span>
+</a>
+</nav>
+<div class="mt-auto p-6 bg-gradient-to-t from-white/5 to-transparent">
+<div class="glass-panel p-4 rounded-xl ghost-border">
+<p class="text-xs text-[#dee5ff]/40 mb-1 font-mono">SYSTEM STATUS</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#62fae3]"></div>
+<span class="text-xs font-mono text-secondary">ALL SYSTEMS OPTIMAL</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 pt-24 pb-24 md:pb-8 px-4 md:px-12">
+<!-- Header Section -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-4xl md:text-5xl font-bold font-headline tracking-tighter text-on-surface mb-2">Merchant Desk</h1>
+<p class="text-on-surface-variant max-w-xl">Global slot allocation and dynamic pricing engine. Optimize logistics velocity with real-time merchant demand balancing.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="glass-panel px-6 py-3 rounded-xl ghost-border flex flex-col items-end">
+<span class="text-[10px] font-mono text-secondary/70 tracking-widest uppercase">Global Demand Index</span>
+<span class="text-2xl font-mono text-secondary font-bold">1.42x</span>
+</div>
+<div class="glass-panel px-6 py-3 rounded-xl ghost-border flex flex-col items-end">
+<span class="text-[10px] font-mono text-tertiary/70 tracking-widest uppercase">Next Peak Window</span>
+<span class="text-2xl font-mono text-tertiary font-bold">14:00</span>
+</div>
+</div>
+</section>
+<!-- Dynamic Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left: Controls & Filters (Bento Style) -->
+<div class="lg:col-span-3 space-y-6">
+<div class="glass-panel p-6 rounded-2xl ghost-border">
+<h3 class="text-sm font-bold text-primary mb-4 font-headline uppercase tracking-wider">Parameters</h3>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-xs text-on-surface-variant font-label">Region Sector</label>
+<select class="bg-surface-container-highest border-none rounded-lg text-sm text-on-surface focus:ring-1 focus:ring-primary">
+<option>North American Hub (NA-01)</option>
+<option>European Gateway (EU-04)</option>
+<option>Asia Pacific Core (AP-02)</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs text-on-surface-variant font-label">Payload Class</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="px-3 py-2 bg-primary/20 text-primary border border-primary/30 rounded-lg text-xs font-bold">CRITICAL</button>
+<button class="px-3 py-2 bg-surface-container-highest text-on-surface-variant border border-white/5 rounded-lg text-xs hover:bg-white/5 transition-colors">STANDARD</button>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel overflow-hidden rounded-2xl ghost-border relative group h-48">
+<img class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" data-alt="futuristic data visualization with blue and purple lines glowing on dark screen background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeAzJ-zT6kLgW3MJuK8CpDPGkZlqq____xeEnFaDrjF4F55F221UMCAm9D_s1pnsroKSf2fD46sMwCdQlDdoFFggggtFuqD-GYP-48x447owO3Os3ScBVioO7PhJxB8qhTeKYPogOvkyRGPvT4Uy4s4o8-DqTotakYph06BGX2ODW-F97CFBAb0mrxs0VDNrVk5ZkrM9G7mk0ILp4YW9V8dMEYHVa6zMIETIBJv-h5esmfopFe0XcGP5C1ZT8DHZF_xmjg-KD-LDk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent p-6 flex flex-col justify-end">
+<span class="text-[10px] font-mono text-secondary-dim">LIVE FEED: LOGISTICS FLOW</span>
+<h4 class="text-sm font-bold text-on-surface font-headline">Optimization Active</h4>
+</div>
+</div>
+</div>
+<!-- Right: The Slot Grid (The Main Command Console) -->
+<div class="lg:col-span-9">
+<div class="glass-panel rounded-2xl ghost-border overflow-hidden">
+<!-- Grid Header -->
+<div class="p-6 border-b border-white/5 flex items-center justify-between bg-white/2">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-sm bg-primary shadow-[0_0_8px_#ba9eff]"></span>
+<span class="text-xs font-label text-on-surface-variant">Available</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-sm bg-tertiary shadow-[0_0_8px_#ffa450]"></span>
+<span class="text-xs font-label text-on-surface-variant">Peak Demand</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-sm bg-surface-container-highest"></span>
+<span class="text-xs font-label text-on-surface-variant">Reserved</span>
+</div>
+</div>
+<div class="flex items-center gap-2 font-mono text-sm">
+<span class="text-on-surface-variant">DATE:</span>
+<span class="text-on-surface">2024.10.24</span>
+</div>
+</div>
+<!-- The Slots Grid -->
+<div class="p-6">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4">
+<!-- High Demand Peak Slot -->
+<div class="relative p-4 rounded-xl bg-tertiary/10 border border-tertiary/20 group hover:border-tertiary transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-tertiary font-bold tracking-tighter">08:00</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="trending_up">trending_up</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-tertiary/60 font-mono uppercase">Multi-Tier</span>
+<span class="text-xl font-mono text-on-surface font-bold">$1,240</span>
+</div>
+<button class="w-full py-2 bg-tertiary text-on-tertiary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all">Book Slot</button>
+<div class="absolute -top-2 -right-2 bg-tertiary text-on-tertiary text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Peak</div>
+</div>
+<!-- Standard Slot -->
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/40 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant font-bold tracking-tighter">09:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/60 font-mono uppercase">Standard</span>
+<span class="text-xl font-mono text-on-surface font-bold">$890</span>
+</div>
+<button class="w-full py-2 border border-primary/30 text-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:bg-primary/10 active:scale-[0.98] transition-all">Book Slot</button>
+</div>
+<!-- Standard Slot -->
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/40 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant font-bold tracking-tighter">10:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/60 font-mono uppercase">Standard</span>
+<span class="text-xl font-mono text-on-surface font-bold">$910</span>
+</div>
+<button class="w-full py-2 border border-primary/30 text-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:bg-primary/10 active:scale-[0.98] transition-all">Book Slot</button>
+</div>
+<!-- Peak Slot -->
+<div class="relative p-4 rounded-xl bg-tertiary/10 border border-tertiary/20 group hover:border-tertiary transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-tertiary font-bold tracking-tighter">11:00</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="trending_up">trending_up</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-tertiary/60 font-mono uppercase">Multi-Tier</span>
+<span class="text-xl font-mono text-on-surface font-bold">$1,450</span>
+</div>
+<button class="w-full py-2 bg-tertiary text-on-tertiary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:scale-[1.02] transition-all">Book Slot</button>
+</div>
+<!-- Reserved Slot -->
+<div class="p-4 rounded-xl bg-surface-container-highest/40 border border-white/5 opacity-50 cursor-not-allowed">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant/40 font-bold tracking-tighter">12:00</span>
+<span class="material-symbols-outlined text-on-surface-variant/40 text-sm" data-icon="lock">lock</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/30 font-mono uppercase">Reserved</span>
+<span class="text-xl font-mono text-on-surface/30 font-bold">---</span>
+</div>
+<div class="w-full py-2 bg-white/5 text-[10px] font-bold rounded-lg uppercase tracking-widest text-center text-on-surface-variant/30">Unavailable</div>
+</div>
+<!-- Standard Slot -->
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/40 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant font-bold tracking-tighter">13:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/60 font-mono uppercase">Standard</span>
+<span class="text-xl font-mono text-on-surface font-bold">$940</span>
+</div>
+<button class="w-full py-2 border border-primary/30 text-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:bg-primary/10 active:scale-[0.98] transition-all">Book Slot</button>
+</div>
+<!-- Repeating for grid density -->
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/40 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant font-bold tracking-tighter">14:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/60 font-mono uppercase">Standard</span>
+<span class="text-xl font-mono text-on-surface font-bold">$940</span>
+</div>
+<button class="w-full py-2 border border-primary/30 text-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:bg-primary/10 active:scale-[0.98] transition-all">Book Slot</button>
+</div>
+<div class="relative p-4 rounded-xl bg-primary/10 border border-primary/40 group hover:border-primary transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-primary font-bold tracking-tighter">15:00</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-primary/60 font-mono uppercase">Optimized</span>
+<span class="text-xl font-mono text-on-surface font-bold">$780</span>
+</div>
+<button class="w-full py-2 bg-primary text-on-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:shadow-[0_0_15px_#ba9eff55] active:scale-[0.98] transition-all">Book Slot</button>
+<div class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Deal</div>
+</div>
+<!-- Filler slots for command center feel -->
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/40 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant font-bold tracking-tighter">16:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/60 font-mono uppercase">Standard</span>
+<span class="text-xl font-mono text-on-surface font-bold">$820</span>
+</div>
+<button class="w-full py-2 border border-primary/30 text-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:bg-primary/10 active:scale-[0.98] transition-all">Book Slot</button>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/40 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant font-bold tracking-tighter">17:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/60 font-mono uppercase">Standard</span>
+<span class="text-xl font-mono text-on-surface font-bold">$820</span>
+</div>
+<button class="w-full py-2 border border-primary/30 text-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:bg-primary/10 active:scale-[0.98] transition-all">Book Slot</button>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/40 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant font-bold tracking-tighter">18:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/60 font-mono uppercase">Standard</span>
+<span class="text-xl font-mono text-on-surface font-bold">$850</span>
+</div>
+<button class="w-full py-2 border border-primary/30 text-primary text-[10px] font-bold rounded-lg uppercase tracking-widest hover:bg-primary/10 active:scale-[0.98] transition-all">Book Slot</button>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-highest/40 border border-white/5 opacity-50 cursor-not-allowed">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-mono text-on-surface-variant/40 font-bold tracking-tighter">19:00</span>
+</div>
+<div class="mb-6">
+<span class="block text-[10px] text-on-surface-variant/30 font-mono uppercase">Reserved</span>
+<span class="text-xl font-mono text-on-surface/30 font-bold">---</span>
+</div>
+<div class="w-full py-2 bg-white/5 text-[10px] font-bold rounded-lg uppercase tracking-widest text-center text-on-surface-variant/30">Unavailable</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Auxiliary Data Row -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="glass-panel p-6 rounded-2xl ghost-border">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary" data-icon="show_chart">show_chart</span>
+<h4 class="font-headline font-bold text-on-surface">Pricing Trajectory</h4>
+</div>
+<div class="h-32 w-full flex items-end gap-1">
+<div class="flex-1 bg-secondary/10 rounded-t-sm h-[40%] hover:bg-secondary/40 transition-all"></div>
+<div class="flex-1 bg-secondary/10 rounded-t-sm h-[60%] hover:bg-secondary/40 transition-all"></div>
+<div class="flex-1 bg-secondary/10 rounded-t-sm h-[50%] hover:bg-secondary/40 transition-all"></div>
+<div class="flex-1 bg-tertiary/20 rounded-t-sm h-[90%] hover:bg-tertiary/60 transition-all"></div>
+<div class="flex-1 bg-tertiary/20 rounded-t-sm h-[100%] hover:bg-tertiary/60 transition-all"></div>
+<div class="flex-1 bg-secondary/10 rounded-t-sm h-[70%] hover:bg-secondary/40 transition-all"></div>
+<div class="flex-1 bg-secondary/10 rounded-t-sm h-[45%] hover:bg-secondary/40 transition-all"></div>
+<div class="flex-1 bg-secondary/10 rounded-t-sm h-[55%] hover:bg-secondary/40 transition-all"></div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] font-mono text-on-surface-variant/50">
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl ghost-border flex flex-col justify-center">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline font-bold text-on-surface mb-1">Queue Velocity</h4>
+<p class="text-xs text-on-surface-variant">Average turnaround time per hub</p>
+</div>
+<span class="text-2xl font-mono text-primary font-bold">18m</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+<div class="w-[72%] h-full bg-gradient-to-r from-primary-dim to-primary rounded-full"></div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">Target: 20m</span>
+<span class="text-[10px] font-mono text-secondary uppercase">+12% vs Yesterday</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-[#060e20]/80 backdrop-blur-lg border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] rounded-t-2xl">
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 group active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-medium font-label">Dash</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 group active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="text-[10px] font-medium font-label">Hub</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#ba9eff] scale-110 active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-[10px] font-medium font-label">Desk</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 group active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="text-[10px] font-medium font-label">Crisis</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 group active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-[10px] font-medium font-label">KPI</span>
+</button>
+</nav>
+<script src="../js/api.js"></script>
+<script src="../js/merchant.js"></script>
+</body></html>

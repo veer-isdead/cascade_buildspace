@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cascade | Secure Enrollment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#ff8f06",
+                    "tertiary-fixed-dim": "#f38800",
+                    "secondary-container": "#006b5f",
+                    "on-secondary": "#005c52",
+                    "on-tertiary-container": "#462300",
+                    "on-primary-fixed": "#000000",
+                    "on-error-container": "#ffb2b9",
+                    "primary": "#ba9eff",
+                    "error-container": "#a70138",
+                    "on-tertiary": "#562c00",
+                    "surface-container-high": "#141f38",
+                    "surface-container": "#0f1930",
+                    "background": "#060e20",
+                    "secondary-dim": "#50ebd5",
+                    "on-primary-fixed-variant": "#370086",
+                    "on-error": "#490013",
+                    "on-tertiary-fixed": "#291200",
+                    "on-surface-variant": "#a3aac4",
+                    "on-secondary-container": "#dcfff7",
+                    "error-dim": "#d73357",
+                    "tertiary-fixed": "#ff972e",
+                    "on-tertiary-fixed-variant": "#592e00",
+                    "primary-fixed-dim": "#a27cff",
+                    "surface-container-low": "#091328",
+                    "inverse-on-surface": "#4d556b",
+                    "surface-dim": "#060e20",
+                    "surface-container-lowest": "#000000",
+                    "outline-variant": "#40485d",
+                    "error": "#ff6e84",
+                    "outline": "#6d758c",
+                    "surface-container-highest": "#192540",
+                    "surface-tint": "#ba9eff",
+                    "inverse-primary": "#6e3bd7",
+                    "primary-container": "#ae8dff",
+                    "secondary": "#62fae3",
+                    "primary-fixed": "#ae8dff",
+                    "on-background": "#dee5ff",
+                    "inverse-surface": "#faf8ff",
+                    "surface": "#060e20",
+                    "on-primary": "#39008c",
+                    "surface-bright": "#1f2b49",
+                    "on-surface": "#dee5ff",
+                    "on-secondary-fixed-variant": "#00675c",
+                    "surface-variant": "#192540",
+                    "secondary-fixed": "#62fae3",
+                    "tertiary-dim": "#ec8300",
+                    "on-secondary-fixed": "#004840",
+                    "on-primary-container": "#2b006e",
+                    "tertiary": "#ffa450",
+                    "secondary-fixed-dim": "#50ebd5",
+                    "primary-dim": "#8455ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "1rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+</script>
+<link href="../css/styles.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #060e20;
+            color: #dee5ff;
+            overflow-x: hidden;
+        }
+        .kinetic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(186, 158, 255, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(98, 250, 227, 0.05) 0%, transparent 40%);
+        }
+        .glass-panel {
+            backdrop-filter: blur(40px);
+            background: rgba(15, 25, 48, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-border:focus-within {
+            border-color: #ba9eff;
+            box-shadow: 0 0 15px rgba(186, 158, 255, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 selection:bg-primary/30 selection:text-primary">
+<div class="kinetic-bg"></div>
+<!-- Navigation Suppression: Per instructions, Login/Signup hides primary nav shell -->
+<header class="fixed top-0 w-full px-8 h-20 flex justify-between items-center z-50">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-bold tracking-tighter text-primary font-headline uppercase">Cascade</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#62fae3]"></span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium tracking-wide uppercase" href="#">Infrastructure</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium tracking-wide uppercase" href="#">Protocol</a>
+<div class="h-4 w-[1px] bg-white/10"></div>
+<a class="text-primary text-sm font-bold tracking-widest uppercase border-b border-primary/40 pb-0.5" href="#">Enrollment</a>
+</div>
+</header>
+<main class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10">
+<!-- Left Side: Editorial Branding -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="space-y-2">
+<span class="font-mono text-secondary text-xs tracking-[0.3em] uppercase opacity-80">System Initialization</span>
+<h1 class="text-5xl lg:text-7xl font-bold font-headline tracking-tighter text-on-surface leading-[0.95]">
+                    The <span class="text-primary">Kinetic</span> Void.
+                </h1>
+</div>
+<p class="text-on-surface-variant text-lg max-w-md leading-relaxed">
+                Step into the future of global logistics orchestration. Secure your node in the Cascade network and transform chaotic data into seamless movement.
+            </p>
+</div>
+<!-- Right Side: Enrollment Form -->
+<div class="lg:col-span-7 relative">
+<!-- Background Decorative Elements -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="glass-panel p-8 md:p-12 rounded-xl relative overflow-hidden shadow-2xl">
+<!-- Header -->
+<div class="mb-10">
+<h2 class="text-3xl font-bold font-headline tracking-tight text-on-surface">Secure Enrollment</h2>
+<p class="text-on-surface-variant mt-2" data-auth-switch="true">Already have an account? <a class="text-secondary hover:underline" href="/html/login.html">Login</a></p>
+</div>
+<form class="space-y-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-on-surface-variant ml-1">Identity Tag</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full bg-surface-container-low border border-white/5 rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/40 focus:bg-surface-container transition-all placeholder:text-outline-variant font-body" placeholder="Full Name" type="text"/>
+</div>
+</div>
+<!-- Email Terminal -->
+<div class="space-y-2">
+<label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-on-surface-variant ml-1">Email Terminal</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors">alternate_email</span>
+<input class="w-full bg-surface-container-low border border-white/5 rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/40 focus:bg-surface-container transition-all placeholder:text-outline-variant font-body" placeholder="operator@cascade.io" type="email"/>
+</div>
+</div>
+<!-- Encryption Key -->
+<div class="space-y-2">
+<label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-on-surface-variant ml-1">Encryption Key</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors">key</span>
+<input class="w-full bg-surface-container-low border border-white/5 rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/40 focus:bg-surface-container transition-all placeholder:text-outline-variant font-body" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 text-outline-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<div class="flex justify-between items-center px-1">
+<div class="flex gap-1">
+<div class="h-1 w-8 rounded-full bg-error-container"></div>
+<div class="h-1 w-8 rounded-full bg-white/10"></div>
+<div class="h-1 w-8 rounded-full bg-white/10"></div>
+</div>
+<span class="text-[10px] font-mono text-error uppercase">Security: Low</span>
+</div>
+</div>
+<!-- CTA -->
+<div class="pt-6">
+<button class="w-full group relative flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-primary-dim py-5 rounded-lg text-on-primary font-bold uppercase tracking-widest text-sm overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_30px_-10px_rgba(186,158,255,0.5)]">
+<span class="relative z-10">Create Account</span>
+<span class="material-symbols-outlined relative z-10 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</button>
+</div>
+<!-- Terms -->
+<p class="text-center text-[10px] text-outline-variant uppercase tracking-tighter leading-relaxed px-4">
+                        By proceeding, you authorize Cascade to deploy secure nodes and agree to our 
+                        <a class="text-on-surface-variant hover:text-secondary underline decoration-secondary/30" href="#">Protocol Charter</a> 
+                        &amp; <a class="text-on-surface-variant hover:text-secondary underline decoration-secondary/30" href="#">Privacy Matrix</a>.
+                    </p>
+</form>
+</div>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="fixed bottom-6 left-1/2 -translate-x-1/2 flex gap-8 text-[10px] font-mono uppercase tracking-[0.3em] text-outline-variant opacity-40">
+<span>Region: EU-Central-1</span>
+<span>Version: 4.8.0-Cascade</span>
+<span>© 2024 Kinetic Void Corp</span>
+</footer>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+</body></html>

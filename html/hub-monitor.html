@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hub Monitor | Cascade</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#ff8f06",
+                    "tertiary-fixed-dim": "#f38800",
+                    "secondary-container": "#006b5f",
+                    "on-secondary": "#005c52",
+                    "on-tertiary-container": "#462300",
+                    "on-primary-fixed": "#000000",
+                    "on-error-container": "#ffb2b9",
+                    "primary": "#ba9eff",
+                    "error-container": "#a70138",
+                    "on-tertiary": "#562c00",
+                    "surface-container-high": "#141f38",
+                    "surface-container": "#0f1930",
+                    "background": "#060e20",
+                    "secondary-dim": "#50ebd5",
+                    "on-primary-fixed-variant": "#370086",
+                    "on-error": "#490013",
+                    "on-tertiary-fixed": "#291200",
+                    "on-surface-variant": "#a3aac4",
+                    "on-secondary-container": "#dcfff7",
+                    "error-dim": "#d73357",
+                    "tertiary-fixed": "#ff972e",
+                    "on-tertiary-fixed-variant": "#592e00",
+                    "primary-fixed-dim": "#a27cff",
+                    "surface-container-low": "#091328",
+                    "inverse-on-surface": "#4d556b",
+                    "surface-dim": "#060e20",
+                    "surface-container-lowest": "#000000",
+                    "outline-variant": "#40485d",
+                    "error": "#ff6e84",
+                    "outline": "#6d758c",
+                    "surface-container-highest": "#192540",
+                    "surface-tint": "#ba9eff",
+                    "inverse-primary": "#6e3bd7",
+                    "primary-container": "#ae8dff",
+                    "secondary": "#62fae3",
+                    "primary-fixed": "#ae8dff",
+                    "on-background": "#dee5ff",
+                    "inverse-surface": "#faf8ff",
+                    "surface": "#060e20",
+                    "on-primary": "#39008c",
+                    "surface-bright": "#1f2b49",
+                    "on-surface": "#dee5ff",
+                    "on-secondary-fixed-variant": "#00675c",
+                    "surface-variant": "#192540",
+                    "secondary-fixed": "#62fae3",
+                    "tertiary-dim": "#ec8300",
+                    "on-secondary-fixed": "#004840",
+                    "on-primary-container": "#2b006e",
+                    "tertiary": "#ffa450",
+                    "secondary-fixed-dim": "#50ebd5",
+                    "primary-dim": "#8455ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+</script>
+<link href="../css/styles.css" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-blur {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glow-stroke-primary {
+            filter: drop-shadow(0 0 4px #ba9eff);
+        }
+        .glow-stroke-secondary {
+            filter: drop-shadow(0 0 4px #62fae3);
+        }
+        .glow-stroke-tertiary {
+            filter: drop-shadow(0 0 4px #ffa450);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary-container">
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/60 backdrop-blur-xl border-b border-white/10 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-headline font-semibold tracking-tighter text-[#ba9eff]">Cascade</span>
+</div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="#">Dashboard</a>
+<a class="font-label text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1" href="#">Hub Monitor</a>
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="#">Merchant Desk</a>
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="#">Crisis Control</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-white/5 transition-all text-[#ba9eff]">
+<span class="material-symbols-outlined">light_mode</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-high border border-white/10 overflow-hidden">
+<img alt="User Avatar" data-alt="high-quality 3D render of a stylized professional male avatar in a sleek tech-focused portrait style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChitCn4OOoKaQDN-O7wJLv4OqBjm2_Zzuzk927iyFKlGfpPDVWL6ikOetY58vME_FZ4mHyQeE-ItX87prRurwdamfM0oZS56UzU0uE0_pARJVjy5qXxA9fpPK1QIMfZXUWj2FIWhHQvOEYPJD7pjH0hz5VOkajG4njnrJRk5PQDOm34Noju2mys386vw02MZZJpVmEEzcbiS9Kx6WzoSqA1M5bNA0IoubAzw1t15IA3OQcg4Fmpyfj-aTLXPNK03h4814eq9xRjwQ"/>
+</div>
+</div>
+</header>
+<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col h-full w-72 border-r border-white/5 bg-[#060e20]/40 backdrop-blur-2xl shadow-2xl shadow-black/50">
+<div class="pt-24 px-6 mb-8">
+<span class="text-xl font-headline font-bold text-[#ba9eff] tracking-widest">CASCADE</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label font-medium">Hub Monitor</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label font-medium">Merchant Desk</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="font-label font-medium">Crisis Control</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label font-medium">KPI Metrics</span>
+</a>
+</nav>
+</aside>
+<main class="pt-24 pb-20 md:pb-8 md:pl-80 px-6 min-h-screen">
+<div class="max-w-7xl mx-auto">
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-4xl md:text-5xl font-headline font-semibold tracking-tighter text-on-surface mb-2">Hub Monitor</h1>
+<p class="text-on-surface-variant font-body">Real-time throughput and capacity metrics across global nodes.</p>
+</div>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-surface-container-low ghost-border rounded-xl flex items-center gap-3">
+<span class="flex h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#62fae3]"></span>
+<span class="font-mono text-sm">System: Optimal</span>
+</div>
+<div class="px-4 py-2 bg-surface-container-low ghost-border rounded-xl flex items-center gap-3 font-mono text-sm text-on-surface-variant">
+                            UTC: 14:02:44
+                        </div>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+<div class="lg:col-span-1 bg-surface-container-high/40 kinetic-blur ghost-border p-6 rounded-xl">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2">Total Hubs</p>
+<p class="text-3xl font-mono font-bold text-primary">142</p>
+<div class="mt-4 flex items-center gap-2 text-secondary text-xs font-mono">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +4 Active Nodes
+                    </div>
+</div>
+<div class="lg:col-span-1 bg-surface-container-high/40 kinetic-blur ghost-border p-6 rounded-xl">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2">Avg. Load</p>
+<p class="text-3xl font-mono font-bold text-on-surface">64.2<span class="text-lg opacity-50">%</span></p>
+<div class="mt-4 flex items-center gap-2 text-on-surface-variant text-xs font-mono">
+<span class="material-symbols-outlined text-sm">video_stable</span>
+                        Steady State
+                    </div>
+</div>
+<div class="lg:col-span-1 bg-surface-container-high/40 kinetic-blur ghost-border p-6 rounded-xl">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2">Transit Rate</p>
+<p class="text-3xl font-mono font-bold text-secondary">8.9k</p>
+<div class="mt-4 flex items-center gap-2 text-secondary text-xs font-mono">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+                        Peak Throughput
+                    </div>
+</div>
+<div class="lg:col-span-1 bg-surface-container-high/40 kinetic-blur ghost-border p-6 rounded-xl">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2">Critical Alerts</p>
+<p class="text-3xl font-mono font-bold text-error">03</p>
+<div class="mt-4 flex items-center gap-2 text-error text-xs font-mono">
+<span class="material-symbols-outlined text-sm">warning</span>
+                        Requires Attention
+                    </div>
+</div>
+</div>
+<div class="bg-surface-container-low/30 kinetic-blur ghost-border rounded-2xl overflow-hidden mb-12">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/5">
+<th class="px-8 py-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Hub Location</th>
+<th class="px-8 py-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Capacity %</th>
+<th class="px-8 py-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">Throughput Trend</th>
+<th class="px-8 py-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant text-center">Active Trucks</th>
+<th class="px-8 py-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant">System Status</th>
+<th class="px-8 py-6 font-headline text-xs uppercase tracking-widest text-on-surface-variant"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5 font-mono text-sm">
+<tr class="glass-row group">
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-on-surface font-headline font-bold text-base tracking-tight">Berlin-Süd TX4</span>
+<span class="text-on-surface-variant text-xs font-mono">EU-CENTRAL-1</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="flex-1 h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary shadow-[0_0_8px_#62fae3]" style="width: 42%;"></div>
+</div>
+<span class="text-secondary font-bold">42%</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="h-10 w-32 flex items-end gap-0.5">
+<div class="flex-1 bg-secondary/20 h-2/3 rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary/20 h-3/4 rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary/20 h-1/2 rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary/20 h-full rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary h-4/5 rounded-t-sm glow-stroke-secondary"></div>
+</div>
+</td>
+<td class="px-8 py-6 text-center text-on-surface">124</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-xs">
+<span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
+                                        Stable
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="p-2 rounded-lg hover:bg-white/10 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="glass-row group">
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-on-surface font-headline font-bold text-base tracking-tight">Singapore-Maritime B2</span>
+<span class="text-on-surface-variant text-xs font-mono">AP-SOUTHEAST-1</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="flex-1 h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary shadow-[0_0_8px_#ffa450]" style="width: 88%;"></div>
+</div>
+<span class="text-tertiary font-bold">88%</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="h-10 w-32 flex items-end gap-0.5">
+<div class="flex-1 bg-tertiary/20 h-1/2 rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-tertiary/20 h-3/5 rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-tertiary/20 h-4/5 rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-tertiary/20 h-5/6 rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-tertiary h-full rounded-t-sm glow-stroke-tertiary"></div>
+</div>
+</td>
+<td class="px-8 py-6 text-center text-on-surface">342</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary/10 text-tertiary border border-tertiary/20 text-xs">
+<span class="h-1.5 w-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                                        Warning
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="p-2 rounded-lg hover:bg-white/10 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="glass-row group">
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-on-surface font-headline font-bold text-base tracking-tight">Chicago-Midwest LX</span>
+<span class="text-on-surface-variant text-xs font-mono">US-EAST-2</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="flex-1 h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-error shadow-[0_0_8px_#ff6e84]" style="width: 96%;"></div>
+</div>
+<span class="text-error font-bold">96%</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="h-10 w-32 flex items-end gap-0.5">
+<div class="flex-1 bg-error/20 h-2/3 rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-error/20 h-4/5 rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-error/20 h-full rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-error/20 h-5/6 rounded-t-sm glow-stroke-tertiary"></div>
+<div class="flex-1 bg-error h-full rounded-t-sm glow-stroke-tertiary"></div>
+</div>
+</td>
+<td class="px-8 py-6 text-center text-on-surface">512</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-error/10 text-error border border-error/20 text-xs">
+<span class="h-1.5 w-1.5 rounded-full bg-error animate-pulse"></span>
+                                        Overload
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="p-2 rounded-lg hover:bg-white/10 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="glass-row group">
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-on-surface font-headline font-bold text-base tracking-tight">Sao Paulo Delta 9</span>
+<span class="text-on-surface-variant text-xs font-mono">SA-EAST-1</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="flex-1 h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary shadow-[0_0_8px_#62fae3]" style="width: 58%;"></div>
+</div>
+<span class="text-secondary font-bold">58%</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="h-10 w-32 flex items-end gap-0.5">
+<div class="flex-1 bg-secondary/20 h-1/2 rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary/20 h-2/3 rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary/20 h-1/2 rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary/20 h-3/4 rounded-t-sm glow-stroke-secondary"></div>
+<div class="flex-1 bg-secondary h-2/3 rounded-t-sm glow-stroke-secondary"></div>
+</div>
+</td>
+<td class="px-8 py-6 text-center text-on-surface">89</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-xs">
+<span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
+                                        Stable
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="p-2 rounded-lg hover:bg-white/10 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<div class="bg-surface-container-high/40 kinetic-blur ghost-border p-8 rounded-2xl">
+<h3 class="font-headline text-lg font-semibold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+                        Node Geolocation
+                    </h3>
+<div class="aspect-video bg-surface-container-lowest rounded-xl border border-white/5 relative overflow-hidden group">
+<img alt="Map Visualization" class="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700" data-alt="abstract stylized global map in deep navy and neon purple hues with luminous data points and connecting flight paths" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7X01u20d7MPr5-F50_y7vboCuqgxy1aZWM3cUIgRUkvvcpLxQy3yZUcR_qDSjPNW2oG939VG_AdW0RyrLtQVRJVnpa24v65SM_IRegC8IhQValVVcy-4vLJTYiuB7nPGFOWP7qwGD7c299uc9dUzFWoF9ScRy59qxriTDgVSh034n5lMurBE1NvYMQYzAdqIgccICtx1Ise6nDs7rlImLMJ77xbEQeEktJIfDxsUPVOkU8ypYoElbth-MyKx4WIx_cU8goXos_qo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute top-4 right-4 flex flex-col gap-2">
+<span class="flex h-3 w-3 bg-secondary rounded-full border-2 border-background shadow-[0_0_10px_#62fae3]"></span>
+<span class="flex h-3 w-3 bg-tertiary rounded-full border-2 border-background shadow-[0_0_10px_#ffa450]"></span>
+<span class="flex h-3 w-3 bg-error rounded-full border-2 border-background shadow-[0_0_10px_#ff6e84]"></span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high/40 kinetic-blur ghost-border p-8 rounded-2xl">
+<div class="flex justify-between items-start mb-6">
+<h3 class="font-headline text-lg font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                            Fleet Utilization
+                        </h3>
+<span class="font-mono text-xs text-on-surface-variant">Past 24 Hours</span>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-mono mb-2 uppercase tracking-tighter">
+<span>Ground Fleet</span>
+<span class="text-secondary">82%</span>
+</div>
+<div class="h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[82%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-mono mb-2 uppercase tracking-tighter">
+<span>Air Freight</span>
+<span class="text-primary">64%</span>
+</div>
+<div class="h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[64%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-mono mb-2 uppercase tracking-tighter">
+<span>Maritime Cargo</span>
+<span class="text-tertiary">91%</span>
+</div>
+<div class="h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[91%]"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-white/5 flex justify-between items-center">
+<p class="text-xs text-on-surface-variant font-body">Average response time: <span class="text-on-surface font-mono">14ms</span></p>
+<button class="text-xs font-headline font-bold text-primary hover:underline transition-all">Full Report</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-[#060e20]/80 backdrop-blur-lg border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] rounded-t-2xl">
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-all">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-medium font-label">Dash</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#ba9eff] scale-110">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="text-[10px] font-medium font-label">Hub</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-all">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-[10px] font-medium font-label">Desk</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-all">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="text-[10px] font-medium font-label">Crisis</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-all">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-[10px] font-medium font-label">KPI</span>
+</button>
+</nav>
+<script src="../js/api.js"></script>
+<script src="../js/hub-monitor.js"></script>
+</body></html>

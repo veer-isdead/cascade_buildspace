@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cascade | KPI Metrics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#ff8f06",
+                        "tertiary-fixed-dim": "#f38800",
+                        "secondary-container": "#006b5f",
+                        "on-secondary": "#005c52",
+                        "on-tertiary-container": "#462300",
+                        "on-primary-fixed": "#000000",
+                        "on-error-container": "#ffb2b9",
+                        "primary": "#ba9eff",
+                        "error-container": "#a70138",
+                        "on-tertiary": "#562c00",
+                        "surface-container-high": "#141f38",
+                        "surface-container": "#0f1930",
+                        "background": "#060e20",
+                        "secondary-dim": "#50ebd5",
+                        "on-primary-fixed-variant": "#370086",
+                        "on-error": "#490013",
+                        "on-tertiary-fixed": "#291200",
+                        "on-surface-variant": "#a3aac4",
+                        "on-secondary-container": "#dcfff7",
+                        "error-dim": "#d73357",
+                        "tertiary-fixed": "#ff972e",
+                        "on-tertiary-fixed-variant": "#592e00",
+                        "primary-fixed-dim": "#a27cff",
+                        "surface-container-low": "#091328",
+                        "inverse-on-surface": "#4d556b",
+                        "surface-dim": "#060e20",
+                        "surface-container-lowest": "#000000",
+                        "outline-variant": "#40485d",
+                        "error": "#ff6e84",
+                        "outline": "#6d758c",
+                        "surface-container-highest": "#192540",
+                        "surface-tint": "#ba9eff",
+                        "inverse-primary": "#6e3bd7",
+                        "primary-container": "#ae8dff",
+                        "secondary": "#62fae3",
+                        "primary-fixed": "#ae8dff",
+                        "on-background": "#dee5ff",
+                        "inverse-surface": "#faf8ff",
+                        "surface": "#060e20",
+                        "on-primary": "#39008c",
+                        "surface-bright": "#1f2b49",
+                        "on-surface": "#dee5ff",
+                        "on-secondary-fixed-variant": "#00675c",
+                        "surface-variant": "#192540",
+                        "secondary-fixed": "#62fae3",
+                        "tertiary-dim": "#ec8300",
+                        "on-secondary-fixed": "#004840",
+                        "on-primary-container": "#2b006e",
+                        "tertiary": "#ffa450",
+                        "secondary-fixed-dim": "#50ebd5",
+                        "primary-dim": "#8455ef"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+</script>
+<link href="../css/styles.css" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #060e20;
+            color: #dee5ff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(15, 25, 48, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-border-primary {
+            position: relative;
+        }
+        .glow-border-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(to right, #ba9eff, #8455ef);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .mono-metrics {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/60 backdrop-blur-xl border-b border-white/10 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="#">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="#">Hub Monitor</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="#">Merchant Desk</a>
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label" href="#">KPI Metrics</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-white/10 flex items-center justify-center overflow-hidden">
+<img alt="Profile" data-alt="Stylized avatar of a professional logistics manager with futuristic headset and minimal clean aesthetics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlbO37YOqWYxdacS97CbaKc25MdK-3cwPxyos6vBuNCpnPTcfVm1DqH6GH7blqaic_CkkjXUmN9ed_jM61M1SjaaKWxZSfRurJOkCszN1KFzDwe3bsg0FhGY0TehrZ8QtpiSBCUnp84b8CFWAbo2UnSUV-lXaRoCnZe3SArYOIqP2WZdegPcKXsA4IHzYQptBzhRYwk05NOwEJ6okTOjzW4YnULwd2yhIEnhwcBOfbE_xOQbNEXDlfo8815uqUW15rYAKyM3PU8uo"/>
+</div>
+<button class="material-symbols-outlined text-[#ba9eff] hover:bg-white/5 p-2 rounded-lg transition-all" data-icon="light_mode">light_mode</button>
+</div>
+</nav>
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
+<div class="flex flex-col gap-1 px-4">
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label">Hub Monitor</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label">Merchant Desk</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="font-label">Crisis Control</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label">KPI Metrics</span>
+</a>
+</div>
+<div class="mt-auto p-8">
+<div class="p-6 glass-panel rounded-xl glow-border-primary">
+<p class="text-xs text-primary font-bold mb-2 tracking-widest">SYSTEM STATUS</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#62fae3]"></div>
+<span class="text-sm font-mono">NOMINAL-04</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 pt-28 px-8 pb-32 min-h-screen">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div>
+<h1 class="text-4xl md:text-5xl font-bold font-headline tracking-tighter text-on-background mb-2">Performance Intelligence</h1>
+<p class="text-on-surface-variant max-w-xl">Real-time optimization metrics for the global logistics grid. Synchronized with orbital tracking and terrestrial hub nodes.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-outline tracking-[0.2em] uppercase font-bold">Cycle Time</span>
+<span class="text-2xl mono-metrics text-secondary">0.42ms</span>
+</div>
+<div class="h-12 w-[1px] bg-outline-variant/30 mx-2"></div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-outline tracking-[0.2em] uppercase font-bold">Sync Node</span>
+<span class="text-2xl mono-metrics text-primary">TYO-9</span>
+</div>
+</div>
+</header>
+<!-- Metrics Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+<!-- Metric Card 1: Detection Time -->
+<div class="md:col-span-2 glass-panel p-8 rounded-full glow-border-primary relative overflow-hidden flex flex-col justify-between h-64">
+<div class="relative z-10">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="speed">speed</span>
+<span class="text-[10px] font-mono text-primary/60 border border-primary/20 px-2 py-1 rounded">LIVE_FEED</span>
+</div>
+<h3 class="mt-4 text-on-surface-variant font-label uppercase tracking-widest text-xs font-bold">Detection Time</h3>
+<div class="flex items-baseline gap-4 mt-2">
+<span class="text-6xl mono-metrics font-bold tracking-tighter">1.24</span>
+<span class="text-xl mono-metrics text-primary/60">ms</span>
+</div>
+</div>
+<div class="relative z-10 flex items-center gap-2 text-secondary text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down">trending_down</span>
+<span class="mono-metrics">-14.2% from average</span>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/10 blur-[60px] rounded-full"></div>
+</div>
+<!-- Metric Card 2: Shipments -->
+<div class="glass-panel p-8 rounded-full flex flex-col justify-between h-64">
+<div>
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="package_2">package_2</span>
+<h3 class="mt-4 text-on-surface-variant font-label uppercase tracking-widest text-xs font-bold">Shipments</h3>
+<div class="mt-2">
+<span class="text-4xl mono-metrics font-bold tracking-tighter">842,910</span>
+</div>
+</div>
+<div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-4/5 shadow-[0_0_8px_#62fae3]"></div>
+</div>
+<div class="text-xs text-on-surface-variant flex justify-between mono-metrics">
+<span>90% QUOTA</span>
+<span>1M TARGET</span>
+</div>
+</div>
+<!-- Metric Card 3: Guaranteed Delivery -->
+<div class="glass-panel p-8 rounded-full flex flex-col justify-between h-64">
+<div>
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="verified">verified</span>
+<h3 class="mt-4 text-on-surface-variant font-label uppercase tracking-widest text-xs font-bold">Guaranteed Delivery</h3>
+<div class="mt-2">
+<span class="text-4xl mono-metrics font-bold tracking-tighter">99.98</span>
+<span class="text-lg mono-metrics text-tertiary">%</span>
+</div>
+</div>
+<div class="flex gap-1">
+<div class="h-8 flex-1 bg-tertiary/20 rounded-sm"></div>
+<div class="h-8 flex-1 bg-tertiary/20 rounded-sm"></div>
+<div class="h-8 flex-1 bg-tertiary/20 rounded-sm"></div>
+<div class="h-8 flex-1 bg-tertiary/20 rounded-sm"></div>
+<div class="h-8 flex-1 bg-tertiary shadow-[0_0_12px_#ffa450] rounded-sm"></div>
+</div>
+</div>
+</div>
+<!-- Main Throughput Chart Section -->
+<section class="glass-panel rounded-full p-8 md:p-12 mb-8 relative">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-background">System Throughput Analysis</h2>
+<p class="text-on-surface-variant text-sm">Real-time packet processing and logistical flow intensity</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-mono hover:bg-white/10 transition-all">1H</button>
+<button class="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 text-xs font-mono text-primary transition-all">24H</button>
+<button class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-mono hover:bg-white/10 transition-all">7D</button>
+</div>
+</div>
+<!-- Detailed Chart Mockup -->
+<div class="relative h-[400px] w-full mt-8">
+<!-- Soft Gridlines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+<div class="border-b border-outline-variant h-0 w-full"></div>
+<div class="border-b border-outline-variant h-0 w-full"></div>
+<div class="border-b border-outline-variant h-0 w-full"></div>
+<div class="border-b border-outline-variant h-0 w-full"></div>
+<div class="border-b border-outline-variant h-0 w-full"></div>
+</div>
+<div class="absolute inset-0 flex justify-between pointer-events-none opacity-10">
+<div class="border-r border-outline-variant w-0 h-full"></div>
+<div class="border-r border-outline-variant w-0 h-full"></div>
+<div class="border-r border-outline-variant w-0 h-full"></div>
+<div class="border-r border-outline-variant w-0 h-full"></div>
+<div class="border-r border-outline-variant w-0 h-full"></div>
+<div class="border-r border-outline-variant w-0 h-full"></div>
+</div>
+<!-- Chart Line SVG -->
+<svg class="w-full h-full relative z-10" preserveaspectratio="none" viewbox="0 0 1000 400">
+<defs>
+<lineargradient id="lineGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ba9eff" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#ba9eff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Area fill -->
+<path d="M0 400 L0 320 C 100 310, 200 380, 300 340 S 500 120, 600 150 S 800 50, 900 100 S 1000 80, 1000 80 L1000 400 Z" fill="url(#lineGradient)"></path>
+<!-- The Stroke -->
+<path d="M0 320 C 100 310, 200 380, 300 340 S 500 120, 600 150 S 800 50, 900 100 S 1000 80, 1000 80" fill="none" filter="drop-shadow(0 0 8px rgba(186, 158, 255, 0.6))" stroke="#ba9eff" stroke-linecap="round" stroke-width="3"></path>
+<!-- Glowing Data Points -->
+<circle cx="300" cy="340" fill="#ba9eff" r="4"></circle>
+<circle cx="300" cy="340" fill="#ba9eff" fill-opacity="0.2" r="10"></circle>
+<circle cx="600" cy="150" fill="#ba9eff" r="4"></circle>
+<circle cx="600" cy="150" fill="#ba9eff" fill-opacity="0.2" r="10"></circle>
+<circle cx="900" cy="100" fill="#ba9eff" r="4"></circle>
+<circle cx="900" cy="100" fill="#ba9eff" fill-opacity="0.2" r="10"></circle>
+</svg>
+<!-- Floating Data Label -->
+<div class="absolute left-[580px] top-[90px] z-20 glass-panel px-4 py-2 rounded-lg border border-primary/30 flex flex-col items-start">
+<span class="text-[9px] font-mono text-primary tracking-widest">PEAK_DEMAND</span>
+<span class="text-lg mono-metrics font-bold">142.4 Gb/s</span>
+<span class="text-[9px] font-mono text-on-surface-variant">UTC 14:22:09</span>
+</div>
+<!-- Y-Axis Labels -->
+<div class="absolute -left-12 inset-y-0 flex flex-col justify-between text-[10px] mono-metrics text-outline py-1">
+<span>200G</span>
+<span>150G</span>
+<span>100G</span>
+<span>50G</span>
+<span>0G</span>
+</div>
+</div>
+<div class="mt-8 flex justify-between text-[10px] mono-metrics text-outline px-4">
+<span>00:00</span>
+<span>04:00</span>
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+<span>23:59</span>
+</div>
+</section>
+<!-- Secondary Analysis Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="glass-panel p-8 rounded-full">
+<h3 class="text-lg font-headline font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="account_tree">account_tree</span>
+                    Hub Distribution
+                </h3>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-mono text-on-surface-variant">EMEA-NORTH</span>
+<div class="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%]"></div>
+</div>
+<span class="w-12 text-right text-xs mono-metrics">85%</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-mono text-on-surface-variant">APAC-WEST</span>
+<div class="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[62%]"></div>
+</div>
+<span class="w-12 text-right text-xs mono-metrics">62%</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-mono text-on-surface-variant">AMER-CENTRAL</span>
+<div class="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[94%]"></div>
+</div>
+<span class="w-12 text-right text-xs mono-metrics">94%</span>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-full overflow-hidden relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="Futuristic glowing global logistics network with interconnected points on a dark world map with data stream visuals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtdXwV8hP1Nb2myyyUkUYhz1u9A0bYEhPO7EJPlxdSouJC8RUkcOhn_epH8jWSFOLnOqf2whPGtOEXji1dPR7uIpNCeG_NO7-MiagYmuJRx5l0vdo8Eg1hAlvf8pMzQuAg0bfLoN42mjChu99zAMeRrGPQAHk4nSeRUZ6mOltsygxg1WyHHcf_5oQ6gxTu3Jej5t-TywqcUm1dlqlQzQpC62-KXHQqa7ZCLcZs-0v_jGiLFfxSfusT1Gz3sW97FzPSpFwvQSZVGdk"/>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<h3 class="text-lg font-headline font-bold mb-1">Global Node Load</h3>
+<p class="text-xs text-on-surface-variant font-mono">ENCRYPTED TELEMETRY STREAM</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center bg-black/40 backdrop-blur-md p-3 rounded-lg border border-white/5">
+<span class="text-xs font-mono">LATENCY_SYNC</span>
+<span class="text-xs mono-metrics text-secondary">OK [0.02ms]</span>
+</div>
+<div class="flex justify-between items-center bg-black/40 backdrop-blur-md p-3 rounded-lg border border-white/5">
+<span class="text-xs font-mono">BUFFER_LOAD</span>
+<span class="text-xs mono-metrics text-tertiary">STABLE [12%]</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-[#060e20]/80 backdrop-blur-lg border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] rounded-t-2xl">
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-medium font-label">Dash</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="text-[10px] font-medium font-label">Hub</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-[10px] font-medium font-label">Desk</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="text-[10px] font-medium font-label">Crisis</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#ba9eff] scale-110 active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-[10px] font-medium font-label">KPI</span>
+</button>
+</nav>
+<script src="../js/api.js"></script>
+<script src="../js/kpi.js"></script>
+</body></html>

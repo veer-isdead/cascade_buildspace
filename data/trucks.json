@@ -1,0 +1,93 @@
+[
+  {
+    "id": "truck-001",
+    "truck_id": "TRK-492",
+    "driver_name": "Aarav Singh",
+    "origin_hub": "hub-chicago",
+    "current_hub": "hub-chicago",
+    "assigned_hub": "hub-chicago",
+    "shipment_volume": 18,
+    "eta_minutes": 25,
+    "priority": "critical",
+    "status": "queued",
+    "reroute_history": []
+  },
+  {
+    "id": "truck-002",
+    "truck_id": "TRK-318",
+    "driver_name": "Maya Patel",
+    "origin_hub": "hub-singapore",
+    "current_hub": "hub-singapore",
+    "assigned_hub": "hub-singapore",
+    "shipment_volume": 12,
+    "eta_minutes": 40,
+    "priority": "priority",
+    "status": "queued",
+    "reroute_history": []
+  },
+  {
+    "id": "truck-003",
+    "truck_id": "TRK-771",
+    "driver_name": "Karan Mehta",
+    "origin_hub": "hub-berlin",
+    "current_hub": "hub-berlin",
+    "assigned_hub": "hub-berlin",
+    "shipment_volume": 9,
+    "eta_minutes": 18,
+    "priority": "standard",
+    "status": "inbound",
+    "reroute_history": []
+  },
+  {
+    "id": "truck-004",
+    "truck_id": "TRK-884",
+    "driver_name": "Olivia Martin",
+    "origin_hub": "hub-chicago",
+    "current_hub": "hub-chicago",
+    "assigned_hub": "hub-chicago",
+    "shipment_volume": 15,
+    "eta_minutes": 33,
+    "priority": "priority",
+    "status": "queued",
+    "reroute_history": []
+  },
+  {
+    "id": "truck-005",
+    "truck_id": "TRK-227",
+    "driver_name": "Daniel Weber",
+    "origin_hub": "hub-rotterdam",
+    "current_hub": "hub-rotterdam",
+    "assigned_hub": "hub-rotterdam",
+    "shipment_volume": 11,
+    "eta_minutes": 27,
+    "priority": "standard",
+    "status": "queued",
+    "reroute_history": []
+  },
+  {
+    "id": "truck-006",
+    "truck_id": "TRK-640",
+    "driver_name": "Sophia Tan",
+    "origin_hub": "hub-singapore",
+    "current_hub": "hub-singapore",
+    "assigned_hub": "hub-singapore",
+    "shipment_volume": 16,
+    "eta_minutes": 21,
+    "priority": "critical",
+    "status": "queued",
+    "reroute_history": []
+  },
+  {
+    "id": "truck-007",
+    "truck_id": "TRK-558",
+    "driver_name": "Noah Fischer",
+    "origin_hub": "hub-frankfurt",
+    "current_hub": "hub-frankfurt",
+    "assigned_hub": "hub-frankfurt",
+    "shipment_volume": 8,
+    "eta_minutes": 16,
+    "priority": "standard",
+    "status": "scheduled",
+    "reroute_history": []
+  }
+]

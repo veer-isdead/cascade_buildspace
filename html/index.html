@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#ff8f06",
+                        "tertiary-fixed-dim": "#f38800",
+                        "secondary-container": "#006b5f",
+                        "on-secondary": "#005c52",
+                        "on-tertiary-container": "#462300",
+                        "on-primary-fixed": "#000000",
+                        "on-error-container": "#ffb2b9",
+                        "primary": "#ba9eff",
+                        "error-container": "#a70138",
+                        "on-tertiary": "#562c00",
+                        "surface-container-high": "#141f38",
+                        "surface-container": "#0f1930",
+                        "background": "#060e20",
+                        "secondary-dim": "#50ebd5",
+                        "on-primary-fixed-variant": "#370086",
+                        "on-error": "#490013",
+                        "on-tertiary-fixed": "#291200",
+                        "on-surface-variant": "#a3aac4",
+                        "on-secondary-container": "#dcfff7",
+                        "error-dim": "#d73357",
+                        "tertiary-fixed": "#ff972e",
+                        "on-tertiary-fixed-variant": "#592e00",
+                        "primary-fixed-dim": "#a27cff",
+                        "surface-container-low": "#091328",
+                        "inverse-on-surface": "#4d556b",
+                        "surface-dim": "#060e20",
+                        "surface-container-lowest": "#000000",
+                        "outline-variant": "#40485d",
+                        "error": "#ff6e84",
+                        "outline": "#6d758c",
+                        "surface-container-highest": "#192540",
+                        "surface-tint": "#ba9eff",
+                        "inverse-primary": "#6e3bd7",
+                        "primary-container": "#ae8dff",
+                        "secondary": "#62fae3",
+                        "primary-fixed": "#ae8dff",
+                        "on-background": "#dee5ff",
+                        "inverse-surface": "#faf8ff",
+                        "surface": "#060e20",
+                        "on-primary": "#39008c",
+                        "surface-bright": "#1f2b49",
+                        "on-surface": "#dee5ff",
+                        "on-secondary-fixed-variant": "#00675c",
+                        "surface-variant": "#192540",
+                        "secondary-fixed": "#62fae3",
+                        "tertiary-dim": "#ec8300",
+                        "on-secondary-fixed": "#004840",
+                        "on-primary-container": "#2b006e",
+                        "tertiary": "#ffa450",
+                        "secondary-fixed-dim": "#50ebd5",
+                        "primary-dim": "#8455ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+</script>
+<link href="../css/styles.css" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-blur {
+            backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .primary-glow {
+            box-shadow: 0 0 20px rgba(186, 158, 255, 0.2);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/60 backdrop-blur-xl border-b border-white/10 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm uppercase tracking-widest" href="#">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="#">Hub Monitor</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="#">Merchant Desk</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-[#ba9eff] hover:bg-white/5 p-2 rounded-full transition-all">light_mode</button>
+<div class="w-10 h-10 rounded-full border border-primary/30 overflow-hidden">
+<img alt="User Profile" data-alt="professional headshot of a logistics executive in a dark suit with soft studio lighting and a clean tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw8oY7ex0qVAIS6bjqh8oefpcEBdSxjv79XSxNDEiHvhzI4tGj3SVNuz6CaI8k7iw5pTQ3fjkPCdI17NTRMkDKyMUje4ZQ0RnLKx9t8KT_l6Yc-SzF_oJTIdNRwCK5kGGAZdtvcwr9DW9PNbGE2xRa8BDjL5JXPiNRWZ1tT0WiavDkCEcmbVbCXEQKM6Z1AIAznJ79X_S9Tjvx2rcO5ZsrhAoNz22BblmCN73jyR2mMNEDiw35p_N2CPHoVC07C_uP2Nq7wtd4Mmc"/>
+</div>
+</div>
+</header>
+<!-- Navigation Drawer (Desktop) -->
+<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
+<div class="flex flex-col gap-1 px-4">
+<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] group transition-all duration-300 translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label text-sm tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-label text-sm tracking-wide">Hub Monitor</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label text-sm tracking-wide">Merchant Desk</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="font-label text-sm tracking-wide">Crisis Control</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label text-sm tracking-wide">KPI Metrics</span>
+</a>
+</div>
+<div class="mt-auto p-8 bg-gradient-to-t from-white/5 to-transparent">
+<div class="text-xs font-mono text-primary/40 uppercase tracking-widest mb-2">System Status</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_#62fae3]"></div>
+<span class="text-xs font-mono text-secondary">ACTIVE_NODES: 1,402</span>
+</div>
+</div>
+</aside>
+<main class="md:pl-72 pt-20 min-h-screen">
+<!-- Hero Section -->
+<section class="relative px-8 py-20 lg:py-32 overflow-hidden">
+<div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+<div class="relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-8">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-mono text-primary uppercase tracking-[0.2em]">Live Simulation v4.2</span>
+</div>
+<h1 class="text-5xl lg:text-7xl font-headline font-semibold text-on-surface tracking-tighter leading-tight mb-6">
+                        Prevent Logistics Gridlock <span class="text-primary">Before</span> It Happens
+                    </h1>
+<p class="text-xl text-on-surface-variant font-body mb-10 max-w-lg leading-relaxed">
+                        AI-powered predictive monitoring for the kinetic void. Transform chaotic global streams into a streamlined, high-authority command center.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-gradient-to-r from-primary to-primary-dim rounded-xl font-headline font-semibold text-on-primary-fixed primary-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+                            View Dashboard
+                        </button>
+<button class="px-8 py-4 rounded-xl border border-outline-variant text-secondary font-headline font-semibold hover:bg-white/5 transition-all duration-200">
+                            Simulate Crisis
+                        </button>
+</div>
+</div>
+<!-- Animated Network Visual -->
+<div class="relative aspect-square lg:aspect-video rounded-3xl overflow-hidden ghost-border bg-surface-container-lowest/50 backdrop-blur-md">
+<div class="absolute inset-0 flex items-center justify-center opacity-40">
+<div class="absolute w-[150%] h-[150%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
+</div>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<div class="text-[10px] font-mono text-secondary uppercase tracking-widest">Global Network Status</div>
+<div class="text-2xl font-mono text-on-surface">99.42% <span class="text-xs text-secondary">NORMAL</span></div>
+</div>
+<div class="flex gap-2">
+<div class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-mono text-on-surface-variant">NODE_ALPHA</div>
+<div class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-mono text-on-surface-variant">NODE_BETA</div>
+</div>
+</div>
+<div class="relative h-full flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-20 mix-blend-overlay" data-alt="abstract network visualization showing glowing purple nodes and neon teal lines connecting data points over a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-dfFo9TzYDFaD70Ad7GZzqmDWYFHT99BOYhem2QS8fs9zU2JqHPsoIZkWzRyL4to3-pwYPBCuudqzluVdjLAQjnZlpVqo_nbyKB-3y7bGOZQsw74TetzqFUBdW6LUiCozryagaaMWo0_gE1FnY9W8rx7k2E5z9jU19WPLtW92IRe83I7w2NYohvhCeG7A1k6rsETBCRr3XeuHRw0cQxaM2FeNazOjvhEx_xCNANiVzJ2-ZQhPwUvwSgn9kOC4kClPYGsTlkUwC-k"/>
+<!-- Overlay UI elements -->
+<div class="absolute top-1/4 left-1/4 p-3 bg-surface-container-highest/80 backdrop-blur-xl border border-primary/30 rounded-xl shadow-2xl">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">local_shipping</span>
+</div>
+<div>
+<div class="text-[10px] font-mono text-primary">TRK_492</div>
+<div class="text-xs text-on-surface font-semibold">ETA: 14:20</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 p-3 bg-surface-container-highest/80 backdrop-blur-xl border border-secondary/30 rounded-xl shadow-2xl">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm">hub</span>
+</div>
+<div>
+<div class="text-[10px] font-mono text-secondary">HUB_NYC</div>
+<div class="text-xs text-on-surface font-semibold">FLOW: HIGH</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Features Grid -->
+<section class="px-8 py-24 bg-surface-container-low/30">
+<div class="max-w-6xl mx-auto">
+<div class="mb-16">
+<h2 class="text-4xl font-headline font-semibold mb-4">Core Infrastructure</h2>
+<p class="text-on-surface-variant max-w-2xl">Precision engineering for the world's most complex logistics networks.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[240px]">
+<!-- Feature 1 -->
+<div class="md:col-span-8 bg-surface-container rounded-3xl p-8 ghost-border hover:bg-surface-container-high transition-colors group flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">psychology</span>
+<h3 class="text-2xl font-headline font-semibold mb-2">Early Warning AI</h3>
+<p class="text-on-surface-variant max-w-md">Our neural network predicts bottlenecks 6 hours before they manifest, utilizing real-time global weather and traffic telematics.</p>
+</div>
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-primary/10 to-transparent rounded-full -mr-16 -mb-16 group-hover:scale-110 transition-transform duration-500"></div>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-4 bg-surface-container-highest rounded-3xl p-8 ghost-border hover:border-tertiary/40 transition-all flex flex-col items-center text-center justify-center border-b-4 border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-5xl mb-6">menu_book</span>
+<h3 class="text-xl font-headline font-semibold mb-2">Crisis Playbooks</h3>
+<p class="text-sm text-on-surface-variant">Pre-validated responses for every conceivable logistical failure.</p>
+</div>
+<!-- Feature 3 -->
+<div class="md:col-span-4 bg-[#060e20] rounded-3xl p-8 border border-white/5 hover:border-secondary/30 transition-all flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary">alt_route</span>
+</div>
+<h3 class="text-xl font-headline font-semibold mb-2">Smart Rerouting</h3>
+<p class="text-sm text-on-surface-variant">Automated deviation logic that recalculates 40,000+ paths per second across the grid.</p>
+</div>
+<div class="font-mono text-xs text-secondary/40">CALC_DELAY: 12ms</div>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-8 bg-surface-container rounded-3xl p-8 ghost-border overflow-hidden relative group">
+<div class="flex flex-col h-full justify-between lg:flex-row lg:items-center gap-8">
+<div class="max-w-xs">
+<h3 class="text-2xl font-headline font-semibold mb-2">Dynamic Slot Pricing</h3>
+<p class="text-on-surface-variant">Equilibrium-based pricing models that adjust to demand peaks in real-time, maximizing terminal throughput.</p>
+</div>
+<div class="flex-1 bg-background/50 rounded-2xl p-6 ghost-border">
+<div class="space-y-4">
+<div class="flex justify-between items-center text-[10px] font-mono text-on-surface-variant uppercase">
+<span>Terminal Alpha</span>
+<span class="text-secondary">+$14.20/unit</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4 rounded-full"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono text-on-surface-variant uppercase">
+<span>Terminal Beta</span>
+<span class="text-tertiary">+$2.10/unit</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-1/4 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="px-8 py-20">
+<div class="max-w-6xl mx-auto flex flex-wrap justify-between gap-12">
+<div class="flex-1 min-w-[200px]">
+<div class="text-[10px] font-mono text-primary uppercase tracking-[0.3em] mb-2">Total Volume</div>
+<div class="text-4xl font-mono text-on-surface font-semibold tracking-tighter">4.82B<span class="text-primary text-xl">MT</span></div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<div class="text-[10px] font-mono text-secondary uppercase tracking-[0.3em] mb-2">Accuracy Rate</div>
+<div class="text-4xl font-mono text-on-surface font-semibold tracking-tighter">99.8<span class="text-secondary text-xl">%</span></div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<div class="text-[10px] font-mono text-tertiary uppercase tracking-[0.3em] mb-2">Mean Latency</div>
+<div class="text-4xl font-mono text-on-surface font-semibold tracking-tighter">122<span class="text-tertiary text-xl">ms</span></div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<div class="text-[10px] font-mono text-error uppercase tracking-[0.3em] mb-2">Risk Avoided</div>
+<div class="text-4xl font-mono text-on-surface font-semibold tracking-tighter">$2.4<span class="text-error text-xl">BN</span></div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-8 py-32">
+<div class="max-w-4xl mx-auto bg-gradient-to-br from-surface-container-high to-surface-container rounded-[2rem] p-12 lg:p-20 text-center relative overflow-hidden ghost-border">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
+<div class="relative z-10">
+<h2 class="text-4xl lg:text-5xl font-headline font-semibold mb-8">Ready to step into the kinetic void?</h2>
+<p class="text-on-surface-variant mb-12 max-w-xl mx-auto text-lg leading-relaxed">
+                        Join the world's most advanced logistics teams and prevent gridlock before it costs you millions.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="px-10 py-5 bg-primary text-on-primary font-headline font-bold rounded-xl primary-glow hover:bg-primary-fixed-dim transition-all">Schedule Live Demo</button>
+<button class="px-10 py-5 bg-white/5 border border-white/10 text-on-surface font-headline font-bold rounded-xl hover:bg-white/10 transition-all">Request Technical Specs</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="px-8 py-12 border-t border-white/5 text-on-surface-variant">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold font-headline text-primary tracking-tighter uppercase">Cascade</span>
+<span class="text-xs font-mono opacity-30">|</span>
+<span class="text-[10px] font-mono uppercase tracking-widest">© 2024 NEXUS LOGISTICS GROUP</span>
+</div>
+<div class="flex gap-8 text-[10px] font-mono uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Privacy_Security</a>
+<a class="hover:text-primary transition-colors" href="#">Terms_of_Service</a>
+<a class="hover:text-primary transition-colors" href="#">API_Status</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-[#060e20]/80 backdrop-blur-lg border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-[#ba9eff] scale-110" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium font-label">Dash</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-colors" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="text-[10px] font-medium font-label">Hub</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-[10px] font-medium font-label">Desk</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-colors" href="#">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="text-[10px] font-medium font-label">Crisis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee5ff]/40 hover:text-[#ba9eff]/80 transition-colors" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[10px] font-medium font-label">KPI</span>
+</a>
+</nav>
+<script src="../js/api.js"></script>
+<script src="../js/landing.js"></script>
+</body></html>

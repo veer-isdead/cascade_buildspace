@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#ff8f06",
+                    "tertiary-fixed-dim": "#f38800",
+                    "secondary-container": "#006b5f",
+                    "on-secondary": "#005c52",
+                    "on-tertiary-container": "#462300",
+                    "on-primary-fixed": "#000000",
+                    "on-error-container": "#ffb2b9",
+                    "primary": "#ba9eff",
+                    "error-container": "#a70138",
+                    "on-tertiary": "#562c00",
+                    "surface-container-high": "#141f38",
+                    "surface-container": "#0f1930",
+                    "background": "#060e20",
+                    "secondary-dim": "#50ebd5",
+                    "on-primary-fixed-variant": "#370086",
+                    "on-error": "#490013",
+                    "on-tertiary-fixed": "#291200",
+                    "on-surface-variant": "#a3aac4",
+                    "on-secondary-container": "#dcfff7",
+                    "error-dim": "#d73357",
+                    "tertiary-fixed": "#ff972e",
+                    "on-tertiary-fixed-variant": "#592e00",
+                    "primary-fixed-dim": "#a27cff",
+                    "surface-container-low": "#091328",
+                    "inverse-on-surface": "#4d556b",
+                    "surface-dim": "#060e20",
+                    "surface-container-lowest": "#000000",
+                    "outline-variant": "#40485d",
+                    "error": "#ff6e84",
+                    "outline": "#6d758c",
+                    "surface-container-highest": "#192540",
+                    "surface-tint": "#ba9eff",
+                    "inverse-primary": "#6e3bd7",
+                    "primary-container": "#ae8dff",
+                    "secondary": "#62fae3",
+                    "primary-fixed": "#ae8dff",
+                    "on-background": "#dee5ff",
+                    "inverse-surface": "#faf8ff",
+                    "surface": "#060e20",
+                    "on-primary": "#39008c",
+                    "surface-bright": "#1f2b49",
+                    "on-surface": "#dee5ff",
+                    "on-secondary-fixed-variant": "#00675c",
+                    "surface-variant": "#192540",
+                    "secondary-fixed": "#62fae3",
+                    "tertiary-dim": "#ec8300",
+                    "on-secondary-fixed": "#004840",
+                    "on-primary-container": "#2b006e",
+                    "tertiary": "#ffa450",
+                    "secondary-fixed-dim": "#50ebd5",
+                    "primary-dim": "#8455ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+</script>
+<link href="../css/styles.css" rel="stylesheet"/>
+<style>
+        .glass-panel {
+            background: rgba(15, 25, 48, 0.4);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .kinetic-void-bg {
+            background-color: #060e20;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(186, 158, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(98, 250, 227, 0.03) 0%, transparent 40%);
+        }
+        .glow-button {
+            box-shadow: 0 0 15px rgba(186, 158, 255, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(186, 158, 255, 0.5);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary/30 kinetic-void-bg flex items-center justify-center p-6">
+<div class="fixed top-0 left-0 w-full p-12 pointer-events-none z-0">
+<div class="flex justify-between items-center opacity-20">
+<div class="font-mono text-[10px] tracking-widest uppercase">System Status: Nominal</div>
+<div class="font-mono text-[10px] tracking-widest uppercase">Node: 0x921/CASCADE</div>
+</div>
+</div>
+<main class="w-full max-w-lg z-10">
+<div class="glass-panel rounded-full p-10 shadow-[0px_24px_48px_rgba(0,0,0,0.5)] border border-white/5 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+<div class="mb-12 text-center">
+<h1 class="font-headline text-4xl font-semibold tracking-tighter text-primary mb-2">CASCADE</h1>
+<p class="text-on-surface-variant font-body text-sm tracking-wide">Enter credentials to interface with the logistics grid.</p>
+</div>
+<form class="space-y-8">
+<div class="space-y-6">
+<div class="relative group">
+<label class="block font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-2 ml-1">Grid Identity (Email)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary/60 material-symbols-outlined">alternate_email</span>
+<input class="w-full bg-surface-container-lowest/50 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-on-surface font-body focus:outline-none focus:border-primary/50 focus:ring-0 transition-all placeholder:text-outline/40" placeholder="operator@cascade.sys" type="email"/>
+</div>
+</div>
+<div class="relative group">
+<div class="flex justify-between items-end mb-2 ml-1">
+<label class="block font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant">Security Key</label>
+<a class="text-[10px] uppercase tracking-widest text-secondary hover:text-secondary-dim transition-colors" href="#">Key Recovery</a>
+</div>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary/60 material-symbols-outlined">passkey</span>
+<input class="w-full bg-surface-container-lowest/50 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-on-surface font-mono focus:outline-none focus:border-primary/50 focus:ring-0 transition-all placeholder:text-outline/40" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 px-1">
+<input class="w-4 h-4 rounded bg-surface-container-lowest border-white/10 text-primary focus:ring-offset-background focus:ring-primary/50" id="persist" type="checkbox"/>
+<label class="text-xs text-on-surface-variant font-label cursor-pointer select-none" for="persist">Persist session across cycles</label>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-dim py-5 rounded-xl font-headline font-semibold text-on-primary-container tracking-wider uppercase text-sm glow-button transition-all active:scale-[0.98]" type="submit">
+                    Initiate Connection
+                </button>
+</form>
+<p class="text-center text-sm text-on-surface-variant mt-6" data-auth-switch="true">Don't have an account? <a class="text-primary hover:underline" href="/html/signup.html">Create one</a></p>
+<div class="mt-12 flex items-center gap-4">
+<div class="h-[1px] flex-grow bg-white/5"></div>
+<span class="text-[10px] font-mono text-outline uppercase tracking-widest">External Protocols</span>
+<div class="h-[1px] flex-grow bg-white/5"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<button class="flex items-center justify-center gap-3 py-3 border border-white/5 rounded-xl bg-white/5 hover:bg-white/10 transition-all group">
+<img alt="" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" data-alt="minimalist google logo icon with clean edges and standard company colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMWxZKTmIH94QFb52zQIP5EOCyDPojYUVG4b2vYBTPlt4OPgSObP3vSrrAw4F-7uI_YGnjBsfIR1H343kcsI5N3Sly8wEL1FGetCAwGGcaOww12cFk0w8eCA9pLZvOpjLHJ3KV_NhRecS7iG3-1dNviB1UdxYEmfL4LNPLF_IAclyJnkGUylmt4whv_nfCB6vaiXH2KS7tENWEcfys99UoOjDPlxKGZS1cv_qlPQ_3XcZxWyBjlmdsZ_gaN25a-YV5VP_cAfZ2hcA"/>
+<span class="text-xs font-label text-on-surface-variant group-hover:text-on-surface">SSO Node</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 border border-white/5 rounded-xl bg-white/5 hover:bg-white/10 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface">terminal</span>
+<span class="text-xs font-label text-on-surface-variant group-hover:text-on-surface">CLI Access</span>
+</button>
+</div>
+</div>
+<div class="mt-8 flex justify-center gap-8">
+<a class="text-[10px] font-mono text-outline uppercase tracking-[0.2em] hover:text-primary transition-colors" href="#">Terms of Protocol</a>
+<a class="text-[10px] font-mono text-outline uppercase tracking-[0.2em] hover:text-primary transition-colors" href="#">Privacy Shield</a>
+<a class="text-[10px] font-mono text-outline uppercase tracking-[0.2em] hover:text-primary transition-colors" href="#">Node: v4.2.0</a>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 w-full p-12 pointer-events-none z-0 overflow-hidden">
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<div class="w-48 h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="w-1/3 h-full bg-primary/20"></div>
+</div>
+<div class="font-mono text-[9px] text-outline/30 uppercase tracking-tighter">Lat: 51.5074° N | Lon: 0.1278° W</div>
+</div>
+<div class="text-right">
+<div class="font-mono text-[9px] text-outline/30 uppercase tracking-tighter mb-1">Encrypted Tunnel Active</div>
+<div class="font-mono text-[10px] text-secondary/40 tracking-widest">TLS 1.3 SECURE</div>
+</div>
+</div>
+</div>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+</body></html>

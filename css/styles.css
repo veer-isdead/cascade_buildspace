@@ -1,0 +1,96 @@
+:root {
+  color-scheme: dark;
+}
+
+html.theme-light {
+  color-scheme: light;
+}
+
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+#cascade-toast-root {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cascade-toast {
+  min-width: 240px;
+  max-width: 360px;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 25, 48, 0.94);
+  color: #dee5ff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+}
+
+.cascade-toast.success {
+  border-color: rgba(98, 250, 227, 0.35);
+}
+
+.cascade-toast.error {
+  border-color: rgba(255, 110, 132, 0.35);
+}
+
+.cascade-toast.info {
+  border-color: rgba(186, 158, 255, 0.35);
+}
+
+html.theme-light body {
+  background: linear-gradient(180deg, #f6f9ff 0%, #eef2ff 100%) !important;
+  color: #10203d !important;
+}
+
+html.theme-light header,
+html.theme-light nav,
+html.theme-light aside {
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #10203d !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html.theme-light .glass-panel,
+html.theme-light .glass-card,
+html.theme-light .kinetic-blur,
+html.theme-light [class*="bg-surface-container"],
+html.theme-light [class*="bg-surface-dim"],
+html.theme-light [class*="bg-surface"] {
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: #10203d !important;
+  border-color: rgba(148, 163, 184, 0.28) !important;
+}
+
+html.theme-light h1,
+html.theme-light h2,
+html.theme-light h3,
+html.theme-light h4,
+html.theme-light p,
+html.theme-light span,
+html.theme-light label,
+html.theme-light td,
+html.theme-light th,
+html.theme-light a,
+html.theme-light button,
+html.theme-light input,
+html.theme-light select {
+  color: inherit;
+}
+
+html.theme-light input,
+html.theme-light select {
+  background: rgba(241, 245, 249, 0.9) !important;
+}
+
+html.theme-light .cascade-toast {
+  background: rgba(255, 255, 255, 0.95);
+  color: #10203d;
+  border-color: rgba(148, 163, 184, 0.3);
+}
