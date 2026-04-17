@@ -3,14 +3,55 @@ document.addEventListener("DOMContentLoaded", async () => {
   const regionSelect = document.querySelector("select");
   const slotGrid = document.querySelector(".grid.grid-cols-2.sm\\:grid-cols-3.md\\:grid-cols-4.xl\\:grid-cols-6");
   const merchantCards = document.querySelectorAll(".glass-panel.px-6.py-3.rounded-xl");
+  const merchantProfile = {
+    name: document.querySelector("[data-merchant-name]"),
+    company: document.querySelector("[data-merchant-company]"),
+    id: document.querySelector("[data-merchant-id]"),
+    hub: document.querySelector("[data-merchant-hub]"),
+    shipments: document.querySelector("[data-merchant-shipments]"),
+    email: document.querySelector("[data-merchant-email]"),
+    lastSlot: document.querySelector("[data-merchant-last-slot]")
+  };
 
-  async function renderSlots(hubId) {
+  function getSelectedMerchant(merchants) {
+    const session = getSession();
+    return merchants.find((item) => item.contact_email === session?.user?.email) || merchants[0] || null;
+  }
+
+  function renderMerchantProfile(merchant, hubs) {
+    if (!merchant) {
+      merchantProfile.name.textContent = "No merchant connected";
+      merchantProfile.company.textContent = "Connect merchant data to see account details.";
+      merchantProfile.id.textContent = "--";
+      merchantProfile.hub.textContent = "--";
+      merchantProfile.shipments.textContent = "0 booked";
+      merchantProfile.email.textContent = "--";
+      merchantProfile.lastSlot.textContent = "No active slot";
+      return;
+    }
+
+    const preferredHub = hubs.find((hub) => hub.id === merchant.preferred_hub);
+    const totalShipments = merchant.booked_slots.reduce((sum, slot) => sum + (slot.shipment_count || 0), 0);
+    const latestBooking = merchant.booked_slots[merchant.booked_slots.length - 1];
+
+    merchantProfile.name.textContent = merchant.name;
+    merchantProfile.company.textContent = merchant.company;
+    merchantProfile.id.textContent = merchant.merchant_id;
+    merchantProfile.hub.textContent = preferredHub ? preferredHub.name : merchant.preferred_hub;
+    merchantProfile.shipments.textContent = `${totalShipments} booked`;
+    merchantProfile.email.textContent = merchant.contact_email;
+    merchantProfile.lastSlot.textContent = latestBooking ? latestBooking.slot_time : "No active slot";
+  }
+
+  async function renderSlots(hubId, hubs = []) {
     const response = await apiRequest(`/merchant-slots${hubId ? `?hub_id=${hubId}` : ""}`);
     const activeHub = response.active_hub;
+    const merchants = response.merchants || [];
+    const selectedMerchant = getSelectedMerchant(merchants);
 
     if (regionSelect && activeHub) {
-      const hubs = response.merchants.map((merchant) => merchant.preferred_hub);
-      if (!hubs.length) {
+      const merchantHubs = merchants.map((merchant) => merchant.preferred_hub);
+      if (!merchantHubs.length) {
         regionSelect.innerHTML = `<option value="${activeHub.id}">${activeHub.name}</option>`;
       }
     }
@@ -19,6 +60,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       merchantCards[0].querySelector(".text-2xl").textContent = `${activeHub.shipment_rate / 60}x`;
       merchantCards[1].querySelector(".text-2xl").textContent = response.slots.find((slot) => slot.status === "peak")?.slot_time || "14:00";
     }
+
+    renderMerchantProfile(selectedMerchant, hubs);
 
     if (!slotGrid) return;
     if (!activeHub || !response.slots.length) {
@@ -67,12 +110,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     slotGrid.querySelectorAll(".merchant-book-slot").forEach((button) => {
       button.addEventListener("click", async () => {
-        const session = getSession();
         try {
           const merchantsResponse = await apiRequest("/merchant-slots");
-          const merchant =
-            merchantsResponse.merchants.find((item) => item.contact_email === session?.user?.email) ||
-            merchantsResponse.merchants[0];
+          const merchant = getSelectedMerchant(merchantsResponse.merchants || []);
           if (!merchant) {
             showToast("No merchant records yet. Connect MongoDB first.", "info");
             return;
@@ -87,7 +127,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             })
           });
           showToast(`Slot ${result.booking.slot_time} booked for ${merchant.company}.`, "success");
-          await renderSlots(button.dataset.hub);
+          await renderSlots(button.dataset.hub, hubs);
         } catch (error) {
           showToast(error.message, "error");
         }
@@ -97,13 +137,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const hubsResponse = await apiRequest("/hubs");
+    const hubs = hubsResponse.hubs || [];
     if (regionSelect) {
-      regionSelect.innerHTML = hubsResponse.hubs.length
-        ? hubsResponse.hubs.map((hub) => `<option value="${hub.id}">${hub.name} (${hub.region})</option>`).join("")
+      regionSelect.innerHTML = hubs.length
+        ? hubs.map((hub) => `<option value="${hub.id}">${hub.name} (${hub.region})</option>`).join("")
         : `<option value="">No live hubs available</option>`;
-      regionSelect.addEventListener("change", (event) => renderSlots(event.target.value));
+      regionSelect.addEventListener("change", (event) => renderSlots(event.target.value, hubs));
     }
-    await renderSlots(hubsResponse.hubs[0]?.id);
+    await renderSlots(hubs[0]?.id, hubs);
   } catch (error) {
     showToast(error.message, "error");
   }

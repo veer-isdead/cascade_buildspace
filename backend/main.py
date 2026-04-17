@@ -43,7 +43,10 @@ app.include_router(crisis.router)
 app.mount("/html", StaticFiles(directory=BASE_DIR / "html"), name="html")
 app.mount("/js", StaticFiles(directory=BASE_DIR / "js"), name="js")
 app.mount("/css", StaticFiles(directory=BASE_DIR / "css"), name="css")
-app.mount("/assets", StaticFiles(directory=BASE_DIR / "assets"), name="assets")
+
+assets_dir = BASE_DIR / "assets"
+if assets_dir.exists():
+    app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
 
 @app.get("/", tags=["Health"], summary="API heartbeat")

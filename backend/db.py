@@ -61,8 +61,14 @@ class DatabaseManager:
         _load_env_file()
         self.uri = os.getenv("MONGODB_URI", self.uri)
         self.db_name = os.getenv("MONGODB_DB", self.db_name)
+        timeout_ms = int(os.getenv("MONGODB_TIMEOUT_MS", "1000"))
         try:
-            self.client = MongoClient(self.uri, serverSelectionTimeoutMS=5000)
+            self.client = MongoClient(
+                self.uri,
+                serverSelectionTimeoutMS=timeout_ms,
+                connectTimeoutMS=timeout_ms,
+                socketTimeoutMS=timeout_ms,
+            )
             self.client.admin.command("ping")
             self.database = self.client[self.db_name]
             self.connected = True
