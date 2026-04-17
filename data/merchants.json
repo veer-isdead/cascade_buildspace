@@ -6,6 +6,14 @@
     "company": "Vertex Retail",
     "contact_email": "neel@vertex-retail.com",
     "preferred_hub": "hub-berlin",
+    "merchant_score": 90.2,
+    "forecast_accuracy": 92,
+    "packaging_quality": 90,
+    "dispatch_timeliness": 88,
+    "volume_consistency": 86,
+    "cancellation_rate": 4,
+    "dispatch_success_rate": 97.2,
+    "optimization_flags": [],
     "booked_slots": []
   },
   {
@@ -15,6 +23,14 @@
     "company": "Pacific Commerce",
     "contact_email": "hannah@pacific-commerce.com",
     "preferred_hub": "hub-singapore",
+    "merchant_score": 80.7,
+    "forecast_accuracy": 82,
+    "packaging_quality": 78,
+    "dispatch_timeliness": 80,
+    "volume_consistency": 76,
+    "cancellation_rate": 8,
+    "dispatch_success_rate": 91.5,
+    "optimization_flags": ["late_manifest"],
     "booked_slots": [
       {
         "hub_id": "hub-singapore",
@@ -32,6 +48,14 @@
     "company": "Midwest Freight Partners",
     "contact_email": "lucas@midwestfreight.com",
     "preferred_hub": "hub-chicago",
+    "merchant_score": 59.4,
+    "forecast_accuracy": 62,
+    "packaging_quality": 58,
+    "dispatch_timeliness": 55,
+    "volume_consistency": 50,
+    "cancellation_rate": 22,
+    "dispatch_success_rate": 78.0,
+    "optimization_flags": ["packaging_audit", "peak_cancellation_spike"],
     "booked_slots": [
       {
         "hub_id": "hub-chicago",

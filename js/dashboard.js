@@ -13,6 +13,102 @@ document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
   let currentOverloadedHubId = null;
 
+  function ensureMerchantScoreAdminSection() {
+    let section = document.getElementById("merchant-score-admin-section");
+    if (section || !main) return section;
+    section = document.createElement("section");
+    section.id = "merchant-score-admin-section";
+    section.className = "mb-12";
+    section.innerHTML = `
+      <div class="glass-card p-8 rounded-3xl border border-primary/10">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between mb-6">
+          <div>
+            <h3 class="font-headline text-xl tracking-tight">Performance &amp; capacity monitoring</h3>
+            <p class="text-sm text-on-surface-variant">Merchant score, tier classification, dispatch reliability, and optimization signals that explain network variability.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 sm:items-end">
+            <label class="text-[10px] uppercase tracking-widest text-on-surface-variant">Simulate tier
+              <select id="mds-sim-tier" class="mt-1 block w-full rounded-lg border border-white/10 bg-surface-container px-3 py-2 text-sm text-on-surface">
+                <option value="priority">Priority</option>
+                <option value="standard" selected>Standard</option>
+                <option value="optimization">Optimization</option>
+              </select>
+            </label>
+            <button type="button" id="mds-sim-run" class="rounded-xl bg-primary px-5 py-2 text-xs font-bold uppercase tracking-widest text-on-primary">Simulate allocation</button>
+          </div>
+        </div>
+        <div id="mds-admin-table" class="overflow-x-auto text-sm"></div>
+        <div id="mds-sim-output" class="mt-6 rounded-2xl border border-white/5 bg-white/5 p-4 text-xs font-mono text-on-surface-variant hidden"></div>
+      </div>
+    `;
+    const anchor = [...main.querySelectorAll("section")].find((s) =>
+      s.querySelector("h3")?.textContent?.includes("Global Flux")
+    );
+    if (anchor) anchor.insertAdjacentElement("beforebegin", section);
+    else main.appendChild(section);
+    return section;
+  }
+
+  function renderMerchantScoreTable(rows) {
+    const el = document.getElementById("mds-admin-table");
+    if (!el) return;
+    el.innerHTML = rows.length
+      ? `
+      <table class="w-full text-left font-mono text-xs">
+        <thead>
+          <tr class="border-b border-white/10 text-on-surface-variant">
+            <th class="py-2 pr-4">Merchant ID</th>
+            <th class="py-2 pr-4">Merchant score</th>
+            <th class="py-2 pr-4">Tier classification</th>
+            <th class="py-2 pr-4">Dispatch reliability</th>
+            <th class="py-2">Optimization flags</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5 text-on-surface">
+          ${rows
+            .map(
+              (r) => `
+            <tr>
+              <td class="py-3 pr-4">${r.merchant_id}</td>
+              <td class="py-3 pr-4">${r.merchant_score ?? r.current_score}</td>
+              <td class="py-3 pr-4 uppercase">${r.tier_classification ?? r.score_tier}</td>
+              <td class="py-3 pr-4">${Number(r.dispatch_reliability_percent ?? r.dispatch_success_rate).toFixed(1)}%</td>
+              <td class="py-3">${(r.optimization_flags || []).join(", ") || "—"}</td>
+            </tr>
+          `
+            )
+            .join("")}
+        </tbody>
+      </table>
+    `
+      : `<p class="text-on-surface-variant">No merchant records.</p>`;
+  }
+
+  function renderSimSlots(slots) {
+    const out = document.getElementById("mds-sim-output");
+    if (!out) return;
+    if (!slots?.length) {
+      out.classList.add("hidden");
+      return;
+    }
+    out.classList.remove("hidden");
+    out.innerHTML = `
+      <p class="mb-2 text-on-surface font-headline text-sm">Simulated slot board</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+        ${slots
+          .map(
+            (s) => `
+          <div class="rounded border border-white/10 p-2 ${s.status === "peak_locked" ? "border-error/40 text-error" : ""}">
+            <div>${s.slot_time}</div>
+            <div>${s.status}</div>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
   function ensureOperationsSection() {
     let section = document.getElementById("dashboard-operations-grid");
     if (section || !main) return section;
@@ -191,10 +287,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
   }
   ensureOperationsSection();
+  ensureMerchantScoreAdminSection();
 
   try {
     const state = await loadDashboardState();
     const { hubs } = state;
+
+    try {
+      const { merchants } = await apiRequest("/admin/merchant-scores");
+      renderMerchantScoreTable(merchants || []);
+    } catch {
+      renderMerchantScoreTable([]);
+    }
+
+    document.getElementById("mds-sim-run")?.addEventListener("click", async () => {
+      try {
+        const tier = document.getElementById("mds-sim-tier")?.value || "standard";
+        const hubId = hubs.find((h) => h.status === "BOTTLENECK")?.id || hubs[0]?.id;
+        const sim = await apiRequest("/admin/simulate-merchant-capacity", {
+          method: "POST",
+          body: JSON.stringify({ tier, hub_id: hubId })
+        });
+        showToast(sim.message, "success");
+        renderSimSlots(sim.slots);
+      } catch (error) {
+        showToast(error.message, "error");
+      }
+    });
 
     if (!hubs.length) {
       suggestionCard?.addEventListener("click", () => showToast("Connect MongoDB to enable crisis actions.", "info"));

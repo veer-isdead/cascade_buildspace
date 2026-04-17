@@ -21,3 +21,11 @@ class Merchant(BaseModel):
     contact_email: str
     preferred_hub: str
     booked_slots: list[MerchantSlot] = Field(default_factory=list)
+    merchant_score: float | None = None
+    forecast_accuracy: float | None = None
+    packaging_quality: float | None = None
+    dispatch_timeliness: float | None = None
+    volume_consistency: float | None = None
+    cancellation_rate: float | None = None
+    dispatch_success_rate: float | None = None
+    optimization_flags: list[str] = Field(default_factory=list)

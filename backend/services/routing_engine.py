@@ -23,9 +23,9 @@ def find_nearest_available_hub(source_hub_id: str, hubs: list[dict], threshold: 
 
     def score(hub: dict) -> tuple[int, int, float, str]:
         alternative_rank = alternatives.index(hub["id"]) if hub["id"] in alternatives else 99
-        region_penalty = 0 if hub.get("region") == source_region else 1
-        country_penalty = 0 if _country(hub.get("location", "")) == source_country else 1
-        return (alternative_rank, region_penalty + country_penalty, hub_utilization(hub), hub.get("name", ""))
+        region_weight = 0 if hub.get("region") == source_region else 1
+        country_weight = 0 if _country(hub.get("location", "")) == source_country else 1
+        return (alternative_rank, region_weight + country_weight, hub_utilization(hub), hub.get("name", ""))
 
     return deepcopy(sorted(candidates, key=score)[0])
 
