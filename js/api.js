@@ -17,6 +17,12 @@
     kpi: "/html/kpi-dashboard.html",
     "kpi metrics": "/html/kpi-dashboard.html",
     "kpi dashboard": "/html/kpi-dashboard.html",
+    shipment: "/html/shipments.html",
+    shipments: "/html/shipments.html",
+    "shipment tracking": "/html/shipments.html",
+    alert: "/html/alerts.html",
+    alerts: "/html/alerts.html",
+    "alert center": "/html/alerts.html",
     login: "/html/login.html",
     signup: "/html/signup.html",
     "create account": "/html/signup.html",
@@ -106,6 +112,8 @@
     if (normalized.includes("merchant")) return ROUTES["merchant desk"];
     if (normalized.includes("crisis")) return ROUTES["crisis control"];
     if (normalized.includes("kpi")) return ROUTES["kpi dashboard"];
+    if (normalized.includes("shipment")) return ROUTES["shipment tracking"];
+    if (normalized.includes("alert")) return ROUTES.alerts;
     if (normalized.includes("login") || normalized.includes("access terminal")) return ROUTES.login;
     if (normalized.includes("sign up") || normalized.includes("signup") || normalized.includes("create account")) return ROUTES.signup;
     if (normalized === "cascade") return ROUTES.cascade;
@@ -254,6 +262,17 @@
     return `${Number(value || 0).toFixed(1)}%`;
   }
 
+  function formatDateTime(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value || "--";
+    return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit"
+    }).format(date);
+  }
+
   function createEmptyCard(message) {
     return `
       <div class="rounded-2xl border border-dashed border-white/10 bg-white/5 p-6 text-sm text-on-surface-variant">
@@ -279,6 +298,7 @@
     navigateTo,
     formatCurrency,
     formatPercent,
+    formatDateTime,
     createEmptyCard
   };
 })();

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Alert Center | Cascade</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="../css/styles.css" rel="stylesheet"/>
+  <style>
+    body { font-family: "Inter", sans-serif; background: #060e20; }
+    .glass-panel { background: rgba(15, 25, 48, 0.45); backdrop-filter: blur(18px); }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+  <header class="fixed top-0 z-50 flex h-20 w-full items-center justify-between border-b border-white/10 bg-[#060e20]/70 px-8 backdrop-blur-xl">
+    <span class="text-2xl font-headline font-semibold tracking-tighter text-primary">Cascade</span>
+    <nav class="hidden md:flex items-center gap-8">
+      <a class="text-on-surface-variant hover:text-on-surface" href="#">Dashboard</a>
+      <a class="text-on-surface-variant hover:text-on-surface" href="#">Shipment Tracking</a>
+      <a class="text-on-surface-variant hover:text-on-surface" href="#">Hub Monitor</a>
+      <a class="border-b-2 border-primary pb-1 text-primary" href="#">Alerts</a>
+      <button class="material-symbols-outlined rounded-full p-2 text-primary hover:bg-white/5">light_mode</button>
+    </nav>
+  </header>
+  <main class="px-6 pb-16 pt-28 md:px-10">
+    <section class="mx-auto max-w-6xl">
+      <div class="mb-10">
+        <h1 class="font-headline text-4xl font-bold tracking-tighter">Alert Center</h1>
+        <p class="mt-2 text-on-surface-variant">Operational alerts generated from bottleneck detection and shipment delay risk analysis.</p>
+      </div>
+      <div id="alerts-list" class="space-y-5"></div>
+    </section>
+  </main>
+  <script src="../js/api.js"></script>
+  <script src="../js/alerts.js"></script>
+</body>
+</html>

@@ -10,13 +10,16 @@ class Hub(BaseModel):
     name: str
     region: str
     location: str
-    capacity_total: int
+    capacity: int
     current_load: int
     truck_queue: int
-    shipment_rate: int
+    throughput_per_hour: int
+    avg_processing_time: float
     slot_base_price: float
     alert_threshold: float = 85.0
-    status: Literal["NORMAL", "AT_RISK", "OVERLOAD"] = "NORMAL"
+    status: Literal["NORMAL", "HIGH_LOAD", "BOTTLENECK"] = "NORMAL"
     alternative_hubs: list[str] = Field(default_factory=list)
+    capacity_total: int | None = None
+    shipment_rate: int | None = None
     last_detection_time_ms: float = 0.0
     last_updated: datetime = Field(default_factory=datetime.utcnow)

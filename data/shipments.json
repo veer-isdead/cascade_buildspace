@@ -1,0 +1,57 @@
+[
+  {
+    "id": "shipment-001",
+    "shipment_id": "SHP-A1B2C3D4",
+    "origin": "Warehouse-NYC",
+    "destination": "Retail-Chicago",
+    "current_hub": "hub-chicago",
+    "status": "delay_risk",
+    "eta": "2026-04-18T12:30:00Z",
+    "route": ["Warehouse-NYC", "hub-chicago", "Retail-Chicago"],
+    "route_history": []
+  },
+  {
+    "id": "shipment-002",
+    "shipment_id": "SHP-E5F6G7H8",
+    "origin": "Warehouse-Hamburg",
+    "destination": "Retail-Berlin",
+    "current_hub": "hub-berlin",
+    "status": "in_transit",
+    "eta": "2026-04-18T10:15:00Z",
+    "route": ["Warehouse-Hamburg", "hub-berlin", "Retail-Berlin"],
+    "route_history": []
+  },
+  {
+    "id": "shipment-003",
+    "shipment_id": "SHP-I9J0K1L2",
+    "origin": "Warehouse-Tokyo",
+    "destination": "Retail-Singapore",
+    "current_hub": "hub-singapore",
+    "status": "delayed",
+    "eta": "2026-04-18T16:45:00Z",
+    "route": ["Warehouse-Tokyo", "hub-singapore", "Retail-Singapore"],
+    "route_history": []
+  },
+  {
+    "id": "shipment-004",
+    "shipment_id": "SHP-M3N4O5P6",
+    "origin": "Warehouse-Rotterdam",
+    "destination": "Retail-Frankfurt",
+    "current_hub": "hub-rotterdam",
+    "status": "in_transit",
+    "eta": "2026-04-18T09:00:00Z",
+    "route": ["Warehouse-Rotterdam", "hub-rotterdam", "hub-frankfurt", "Retail-Frankfurt"],
+    "route_history": []
+  },
+  {
+    "id": "shipment-005",
+    "shipment_id": "SHP-Q7R8S9T0",
+    "origin": "Warehouse-LA",
+    "destination": "Retail-Midwest",
+    "current_hub": "hub-chicago",
+    "status": "scheduled",
+    "eta": "2026-04-18T18:20:00Z",
+    "route": ["Warehouse-LA", "hub-chicago", "Retail-Midwest"],
+    "route_history": []
+  }
+]

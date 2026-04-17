@@ -7,7 +7,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.db import db
-from backend.routes import auth, crisis, hubs, merchants, trucks
+from backend.routes import alerts, auth, crisis, hubs, kpi, merchants, shipments, trucks
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,6 +39,9 @@ app.include_router(hubs.router)
 app.include_router(trucks.router)
 app.include_router(merchants.router)
 app.include_router(crisis.router)
+app.include_router(shipments.router)
+app.include_router(kpi.router)
+app.include_router(alerts.router)
 
 app.mount("/html", StaticFiles(directory=BASE_DIR / "html"), name="html")
 app.mount("/js", StaticFiles(directory=BASE_DIR / "js"), name="js")

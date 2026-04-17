@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
+import certifi
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 
@@ -54,6 +55,7 @@ class DatabaseManager:
             "hubs": [],
             "trucks": [],
             "merchants": [],
+            "shipments": [],
             "system_state": [],
         }
 
@@ -68,6 +70,7 @@ class DatabaseManager:
                 serverSelectionTimeoutMS=timeout_ms,
                 connectTimeoutMS=timeout_ms,
                 socketTimeoutMS=timeout_ms,
+                tlsCAFile=certifi.where(),
             )
             self.client.admin.command("ping")
             self.database = self.client[self.db_name]
@@ -144,16 +147,21 @@ class DatabaseManager:
         return len(self.memory_store[collection])
 
     def seed_initial_data(self) -> None:
-        if self.connected and self.database is not None:
-            for collection, filename in (
-                ("hubs", "hubs.json"),
-                ("trucks", "trucks.json"),
-                ("merchants", "merchants.json"),
-            ):
-                if self.count_documents(collection) == 0:
-                    documents = _load_json(filename)
-                    if documents:
-                        self.database[collection].insert_many(documents)
+        for collection, filename in (
+            ("hubs", "hubs.json"),
+            ("trucks", "trucks.json"),
+            ("merchants", "merchants.json"),
+            ("shipments", "shipments.json"),
+        ):
+            if self.count_documents(collection) != 0:
+                continue
+            documents = _load_json(filename)
+            if not documents:
+                continue
+            if self.connected and self.database is not None:
+                self.database[collection].insert_many(documents)
+            else:
+                self.memory_store[collection] = [deepcopy(document) for document in documents]
 
         state = self.find_one("system_state", {"id": "system-state"})
         if not state:

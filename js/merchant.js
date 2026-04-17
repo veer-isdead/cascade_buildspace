@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const { apiRequest, formatCurrency, getSession, showToast } = window.CascadeApp;
+  const main = document.querySelector("main");
   const regionSelect = document.querySelector("select");
   const slotGrid = document.querySelector(".grid.grid-cols-2.sm\\:grid-cols-3.md\\:grid-cols-4.xl\\:grid-cols-6");
   const merchantCards = document.querySelectorAll(".glass-panel.px-6.py-3.rounded-xl");
@@ -12,6 +13,45 @@ document.addEventListener("DOMContentLoaded", async () => {
     email: document.querySelector("[data-merchant-email]"),
     lastSlot: document.querySelector("[data-merchant-last-slot]")
   };
+
+  function ensureSimulationPrompt() {
+    let prompt = document.getElementById("merchant-simulation-prompt");
+    if (prompt || !main) return prompt;
+    prompt = document.createElement("section");
+    prompt.id = "merchant-simulation-prompt";
+    prompt.className = "mb-8 rounded-2xl border border-tertiary/20 bg-tertiary/10 p-6";
+    prompt.innerHTML = `
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.3em] text-tertiary">Merchant Crisis Prompt</p>
+          <h3 class="mt-2 font-headline text-xl font-bold text-on-surface">Simulate hub overload affecting merchant slots</h3>
+          <p class="mt-2 text-sm text-on-surface-variant" data-sim-copy>
+            Trigger a realistic spike in network congestion and slot demand. Trigger again to return all hub and slot conditions to normal.
+          </p>
+        </div>
+        <button class="rounded-xl bg-tertiary px-5 py-3 text-xs font-bold uppercase tracking-[0.2em] text-on-tertiary" data-sim-toggle>
+          Trigger Crisis
+        </button>
+      </div>
+    `;
+    const headerSection = main.querySelector("section.mb-12");
+    headerSection?.insertAdjacentElement("afterend", prompt);
+    return prompt;
+  }
+
+  async function refreshSimulationPrompt() {
+    const prompt = ensureSimulationPrompt();
+    if (!prompt) return;
+    const copy = prompt.querySelector("[data-sim-copy]");
+    const button = prompt.querySelector("[data-sim-toggle]");
+    const hubStatus = await apiRequest("/hub-status");
+    const active = hubStatus.summary.simulation_active;
+    copy.textContent = active
+      ? "Simulation is active. Press again to reverse the synthetic overload and restore merchant slot conditions."
+      : "Trigger a realistic spike in network congestion and slot demand. Trigger again to return all hub and slot conditions to normal.";
+    button.textContent = active ? "Restore Normal" : "Trigger Crisis";
+    button.className = `rounded-xl px-5 py-3 text-xs font-bold uppercase tracking-[0.2em] ${active ? "bg-error text-white" : "bg-tertiary text-on-tertiary"}`;
+  }
 
   function getSelectedMerchant(merchants) {
     const session = getSession();
@@ -144,6 +184,27 @@ document.addEventListener("DOMContentLoaded", async () => {
         : `<option value="">No live hubs available</option>`;
       regionSelect.addEventListener("change", (event) => renderSlots(event.target.value, hubs));
     }
+    const prompt = ensureSimulationPrompt();
+    prompt?.querySelector("[data-sim-toggle]")?.addEventListener("click", async () => {
+      try {
+        const targetHubId = regionSelect?.value || hubs.find((hub) => hub.status === "BOTTLENECK")?.id || hubs[0]?.id || null;
+        const result = await apiRequest("/toggle-crisis-simulation", {
+          method: "POST",
+          body: JSON.stringify({ hub_id: targetHubId, source: "merchant-desk" })
+        });
+        showToast(result.message, "success");
+        const refreshedHubs = (await apiRequest("/hubs")).hubs || [];
+        if (regionSelect && refreshedHubs.length) {
+          regionSelect.innerHTML = refreshedHubs.map((hub) => `<option value="${hub.id}">${hub.name} (${hub.region})</option>`).join("");
+          regionSelect.value = targetHubId && refreshedHubs.some((hub) => hub.id === targetHubId) ? targetHubId : refreshedHubs[0].id;
+        }
+        await refreshSimulationPrompt();
+        await renderSlots(regionSelect?.value || refreshedHubs[0]?.id, refreshedHubs);
+      } catch (error) {
+        showToast(error.message, "error");
+      }
+    });
+    await refreshSimulationPrompt();
     await renderSlots(hubs[0]?.id, hubs);
   } catch (error) {
     showToast(error.message, "error");

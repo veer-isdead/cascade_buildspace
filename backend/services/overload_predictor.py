@@ -2,7 +2,7 @@ from time import perf_counter
 
 
 def capacity_percent(hub: dict) -> float:
-    total_capacity = max(hub.get("capacity_total", 0), 1)
+    total_capacity = max(hub.get("capacity") or hub.get("capacity_total", 0), 1)
     current_load = hub.get("current_load", 0)
     return round((current_load / total_capacity) * 100, 2)
 
