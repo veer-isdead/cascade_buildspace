@@ -74,12 +74,14 @@
 <div class="flex items-center gap-4">
 <span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
 </div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm" href="#">Dashboard</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Hub Monitor</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Merchant Desk</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Crisis Control</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">KPI Metrics</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm" href="/dashboard">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/hub-monitor">Hub Monitor</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/merchant">Merchant Desk</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/crisis-control">Crisis Control</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/kpi-dashboard">KPI Metrics</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/shipments">Shipment Tracking</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/alerts">Alerts</a>
 </nav>
 <div class="flex items-center gap-4">
 <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
@@ -94,42 +96,8 @@
 </div>
 </div>
 </header>
-<!-- NavigationDrawer (Desktop Only) -->
-<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
-<div class="flex-1 space-y-1 px-4">
-<div class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] transition-transform duration-300">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-headline tracking-tight uppercase text-xs">Dashboard</span>
-</div>
-<div class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors translate-x-0 hover:translate-x-1 duration-300 cursor-pointer">
-<span class="material-symbols-outlined">biotech</span>
-<span class="font-headline tracking-tight uppercase text-xs">Hub Monitor</span>
-</div>
-<div class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors translate-x-0 hover:translate-x-1 duration-300 cursor-pointer">
-<span class="material-symbols-outlined">storefront</span>
-<span class="font-headline tracking-tight uppercase text-xs">Merchant Desk</span>
-</div>
-<div class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors translate-x-0 hover:translate-x-1 duration-300 cursor-pointer">
-<span class="material-symbols-outlined">emergency_home</span>
-<span class="font-headline tracking-tight uppercase text-xs">Crisis Control</span>
-</div>
-<div class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors translate-x-0 hover:translate-x-1 duration-300 cursor-pointer">
-<span class="material-symbols-outlined">monitoring</span>
-<span class="font-headline tracking-tight uppercase text-xs">KPI Metrics</span>
-</div>
-</div>
-<div class="p-8">
-<div class="bg-gradient-to-br from-primary/10 to-transparent p-4 rounded-xl border border-primary/20">
-<p class="text-[10px] text-primary/70 uppercase tracking-widest mb-1">Compute Load</p>
-<div class="flex items-baseline gap-2">
-<span class="font-mono text-xl text-primary">42.8</span>
-<span class="text-[10px] text-primary/40 uppercase">TFLOPs</span>
-</div>
-</div>
-</div>
-</aside>
 <!-- Main Content Canvas -->
-<main class="pt-28 pb-24 md:pl-80 px-8 transition-all duration-500">
+<main class="pt-28 pb-24 px-8 transition-all duration-500">
 <!-- Alerts: Overload Predicted -->
 <section class="mb-8">
 <div class="flex items-center justify-between p-1 bg-error-container/20 border border-error/30 rounded-xl backdrop-blur-sm overflow-hidden">

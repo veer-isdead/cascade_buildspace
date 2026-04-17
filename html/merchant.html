@@ -102,11 +102,14 @@
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/60 backdrop-blur-xl border-b border-white/10 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
 <div class="flex items-center gap-8">
 <span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Dashboard</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Hub Monitor</a>
-<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm font-semibold" href="#">Merchant Desk</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="#">Crisis Control</a>
+<nav class="hidden md:flex items-center gap-5">
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/dashboard">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/hub-monitor">Hub Monitor</a>
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm font-semibold" href="/merchant">Merchant Desk</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/crisis-control">Crisis Control</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/kpi-dashboard">KPI Metrics</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/shipments">Shipment Tracking</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm" href="/alerts">Alerts</a>
 </nav>
 </div>
 <div class="flex items-center gap-4">
@@ -117,44 +120,8 @@
 </div>
 </header>
 <!-- NavigationDrawer (Desktop) -->
-<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
-<div class="px-6 mb-8">
-<h2 class="text-xs font-bold tracking-[0.2em] text-[#ba9eff]/50 font-headline">MANAGEMENT</h2>
-</div>
-<nav class="flex flex-col">
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="dashboard">dashboard</span>
-<span class="font-label">Dashboard</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="biotech">biotech</span>
-<span class="font-label">Hub Monitor</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] group" href="#">
-<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
-<span class="font-label font-semibold">Merchant Desk</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="emergency_home">emergency_home</span>
-<span class="font-label">Crisis Control</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined group-hover:translate-x-1 duration-300" data-icon="monitoring">monitoring</span>
-<span class="font-label">KPI Metrics</span>
-</a>
-</nav>
-<div class="mt-auto p-6 bg-gradient-to-t from-white/5 to-transparent">
-<div class="glass-panel p-4 rounded-xl ghost-border">
-<p class="text-xs text-[#dee5ff]/40 mb-1 font-mono">SYSTEM STATUS</p>
-<div class="flex items-center gap-2">
-<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#62fae3]"></div>
-<span class="text-xs font-mono text-secondary">ALL SYSTEMS OPTIMAL</span>
-</div>
-</div>
-</div>
-</aside>
 <!-- Main Content Canvas -->
-<main class="md:ml-72 pt-24 pb-24 md:pb-8 px-4 md:px-12">
+<main class="pt-24 pb-24 md:pb-8 px-4 md:px-12">
 <!-- Header Section -->
 <section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
 <div>

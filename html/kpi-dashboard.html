@@ -127,11 +127,14 @@
 <div class="flex items-center gap-4">
 <span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
 </div>
-<div class="hidden md:flex gap-8">
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="#">Dashboard</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="#">Hub Monitor</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="#">Merchant Desk</a>
-<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label" href="#">KPI Metrics</a>
+<div class="hidden md:flex gap-6">
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="/dashboard">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="/hub-monitor">Hub Monitor</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="/merchant">Merchant Desk</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="/crisis-control">Crisis Control</a>
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label" href="/kpi-dashboard">KPI Metrics</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="/shipments">Shipment Tracking</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label" href="/alerts">Alerts</a>
 </div>
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-white/10 flex items-center justify-center overflow-hidden">
@@ -140,42 +143,8 @@
 <button class="material-symbols-outlined text-[#ba9eff] hover:bg-white/5 p-2 rounded-lg transition-all" data-icon="light_mode">light_mode</button>
 </div>
 </nav>
-<!-- NavigationDrawer (Sidebar) -->
-<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
-<div class="flex flex-col gap-1 px-4">
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-label">Dashboard</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
-<span class="font-label">Hub Monitor</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
-<span class="font-label">Merchant Desk</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
-<span class="font-label">Crisis Control</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
-<span class="font-label">KPI Metrics</span>
-</a>
-</div>
-<div class="mt-auto p-8">
-<div class="p-6 glass-panel rounded-xl glow-border-primary">
-<p class="text-xs text-primary font-bold mb-2 tracking-widest">SYSTEM STATUS</p>
-<div class="flex items-center gap-2">
-<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#62fae3]"></div>
-<span class="text-sm font-mono">NOMINAL-04</span>
-</div>
-</div>
-</div>
-</aside>
 <!-- Main Content Canvas -->
-<main class="md:ml-72 pt-28 px-8 pb-32 min-h-screen">
+<main class="pt-28 px-8 pb-32 min-h-screen">
 <!-- Header Section -->
 <header class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
 <div>

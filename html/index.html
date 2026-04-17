@@ -109,10 +109,14 @@
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/60 backdrop-blur-xl border-b border-white/10 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
 <div class="flex items-center gap-8">
 <span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm uppercase tracking-widest" href="#">Dashboard</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="#">Hub Monitor</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="#">Merchant Desk</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-label text-sm uppercase tracking-widest" href="/dashboard">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="/hub-monitor">Hub Monitor</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="/merchant">Merchant Desk</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="/crisis-control">Crisis Control</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="/kpi-dashboard">KPI Metrics</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="/shipments">Shipments</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-label text-sm uppercase tracking-widest" href="/alerts">Alerts</a>
 </nav>
 </div>
 <div class="flex items-center gap-6">
@@ -122,39 +126,7 @@
 </div>
 </div>
 </header>
-<!-- Navigation Drawer (Desktop) -->
-<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
-<div class="flex flex-col gap-1 px-4">
-<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] group transition-all duration-300 translate-x-1" href="#">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-label text-sm tracking-wide">Dashboard</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined">biotech</span>
-<span class="font-label text-sm tracking-wide">Hub Monitor</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined">storefront</span>
-<span class="font-label text-sm tracking-wide">Merchant Desk</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined">emergency_home</span>
-<span class="font-label text-sm tracking-wide">Crisis Control</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors group" href="#">
-<span class="material-symbols-outlined">monitoring</span>
-<span class="font-label text-sm tracking-wide">KPI Metrics</span>
-</a>
-</div>
-<div class="mt-auto p-8 bg-gradient-to-t from-white/5 to-transparent">
-<div class="text-xs font-mono text-primary/40 uppercase tracking-widest mb-2">System Status</div>
-<div class="flex items-center gap-2">
-<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_#62fae3]"></div>
-<span class="text-xs font-mono text-secondary">ACTIVE_NODES: 1,402</span>
-</div>
-</div>
-</aside>
-<main class="md:pl-72 pt-20 min-h-screen">
+<main class="pt-20 min-h-screen">
 <!-- Hero Section -->
 <section class="relative px-8 py-20 lg:py-32 overflow-hidden">
 <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">

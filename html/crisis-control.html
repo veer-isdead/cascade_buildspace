@@ -120,10 +120,14 @@
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#060e20]/60 backdrop-blur-xl border-b border-white/10 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
 <div class="flex items-center gap-6">
 <span class="text-2xl font-semibold tracking-tighter text-[#ba9eff] font-headline">Cascade</span>
-<nav class="hidden md:flex gap-8 ml-8">
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="#">Dashboard</a>
-<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="#">Hub Monitor</a>
-<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-medium" href="#">Crisis Control</a>
+<nav class="hidden md:flex gap-6 ml-8">
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="/dashboard">Dashboard</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="/hub-monitor">Hub Monitor</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="/merchant">Merchant Desk</a>
+<a class="text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1 font-medium" href="/crisis-control">Crisis Control</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="/kpi-dashboard">KPI Metrics</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="/shipments">Shipment Tracking</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200 font-medium" href="/alerts">Alerts</a>
 </nav>
 </div>
 <div class="flex items-center gap-4">
@@ -135,36 +139,8 @@
 </div>
 </div>
 </header>
-<!-- NavigationDrawer -->
-<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col w-72 bg-[#060e20]/40 backdrop-blur-2xl border-r border-white/5 shadow-2xl shadow-black/50 pt-24">
-<div class="px-6 mb-8">
-<span class="text-xl font-bold text-[#ba9eff] font-headline tracking-widest">CASCADE</span>
-</div>
-<nav class="flex flex-col space-y-1">
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-all duration-300 hover:translate-x-1" href="#">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-medium">Dashboard</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-all duration-300 hover:translate-x-1" href="#">
-<span class="material-symbols-outlined">biotech</span>
-<span class="font-medium">Hub Monitor</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-all duration-300 hover:translate-x-1" href="#">
-<span class="material-symbols-outlined">storefront</span>
-<span class="font-medium">Merchant Desk</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] transition-all duration-300 translate-x-1" href="#">
-<span class="material-symbols-outlined">emergency_home</span>
-<span class="font-medium">Crisis Control</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-all duration-300 hover:translate-x-1" href="#">
-<span class="material-symbols-outlined">monitoring</span>
-<span class="font-medium">KPI Metrics</span>
-</a>
-</nav>
-</aside>
 <!-- Main Content -->
-<main class="md:ml-72 pt-24 pb-24 px-8 min-h-screen">
+<main class="pt-24 pb-24 px-8 min-h-screen">
 <!-- Urgent Alert Panel -->
 <section class="mb-10">
 <div class="relative gradient-border-error rounded-xl p-6 overflow-hidden error-glow">

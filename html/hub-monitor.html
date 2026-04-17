@@ -119,11 +119,14 @@
 <div class="flex items-center gap-4">
 <span class="text-2xl font-headline font-semibold tracking-tighter text-[#ba9eff]">Cascade</span>
 </div>
-<div class="hidden md:flex gap-8 items-center h-full">
-<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="#">Dashboard</a>
-<a class="font-label text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1" href="#">Hub Monitor</a>
-<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="#">Merchant Desk</a>
-<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="#">Crisis Control</a>
+<div class="hidden md:flex gap-6 items-center h-full">
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="/dashboard">Dashboard</a>
+<a class="font-label text-[#ba9eff] border-b-2 border-[#ba9eff] pb-1" href="/hub-monitor">Hub Monitor</a>
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="/merchant">Merchant Desk</a>
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="/crisis-control">Crisis Control</a>
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="/kpi-dashboard">KPI Metrics</a>
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="/shipments">Shipment Tracking</a>
+<a class="font-label text-[#dee5ff]/70 hover:text-[#dee5ff] transition-all duration-200" href="/alerts">Alerts</a>
 </div>
 <div class="flex items-center gap-4">
 <button class="p-2 rounded-full hover:bg-white/5 transition-all text-[#ba9eff]">
@@ -134,34 +137,7 @@
 </div>
 </div>
 </header>
-<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col h-full w-72 border-r border-white/5 bg-[#060e20]/40 backdrop-blur-2xl shadow-2xl shadow-black/50">
-<div class="pt-24 px-6 mb-8">
-<span class="text-xl font-headline font-bold text-[#ba9eff] tracking-widest">CASCADE</span>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-label font-medium">Dashboard</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 bg-[#ba9eff]/10 text-[#ba9eff] border-r-4 border-[#ba9eff] hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
-<span class="font-label font-medium">Hub Monitor</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
-<span class="font-label font-medium">Merchant Desk</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
-<span class="font-label font-medium">Crisis Control</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-4 text-[#dee5ff]/50 hover:bg-white/5 hover:text-[#dee5ff] transition-colors hover:translate-x-1 duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
-<span class="font-label font-medium">KPI Metrics</span>
-</a>
-</nav>
-</aside>
-<main class="pt-24 pb-20 md:pb-8 md:pl-80 px-6 min-h-screen">
+<main class="pt-24 pb-20 md:pb-8 px-6 min-h-screen">
 <div class="max-w-7xl mx-auto">
 <header class="mb-12">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
